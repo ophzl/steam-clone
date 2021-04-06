@@ -6,7 +6,7 @@ function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Boiler</title>
+        <title>Steam Clone</title>
       </Head>
       <Component {...pageProps} />
     </>
