@@ -1,7 +1,16 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import Head from "next/head";
+
+function App({ Component, pageProps }) {
+  return (
+    <>
+      <Head>
+        <title>Boiler</title>
+      </Head>
+      <Component {...pageProps} />
+    </>
+  );
 }
 
-export default MyApp
+export default App;
