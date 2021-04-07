@@ -24,33 +24,14 @@ export const Navbar = () => {
           {/* Site branding */}
           <div className="flex-shrink-0 mr-4">
             {/* Logo */}
-            <Link href="/" className="block" aria-label="Steam">
+            <Link href="/" aria-label="Steam">
               <svg
-                className="w-8 h-8"
-                viewBox="0 0 32 32"
                 xmlns="http://www.w3.org/2000/svg"
+                className="w-12 h-12 cursor-pointer"
+                viewBox="0 0 24 24"
+                fill="#fff"
               >
-                <defs>
-                  <radialGradient
-                    cx="21.152%"
-                    cy="86.063%"
-                    fx="21.152%"
-                    fy="86.063%"
-                    r="79.941%"
-                    id="header-logo"
-                  >
-                    <stop stopColor="#4FD1C5" offset="0%" />
-                    <stop stopColor="#81E6D9" offset="25.871%" />
-                    <stop stopColor="#338CF5" offset="100%" />
-                  </radialGradient>
-                </defs>
-                <rect
-                  width="32"
-                  height="32"
-                  rx="16"
-                  fill="url(#header-logo)"
-                  fillRule="nonzero"
-                />
+                <path d="M9.406 17.183c.431-1.025-.05-2.206-1.076-2.637l-1.762-.741c.331-.125.654-.182.982-.183 1.518 0 2.765 1.236 2.779 2.754.014 1.538-1.217 2.792-2.753 2.806-1.159.005-2.138-.684-2.571-1.665l1.763.741c1.027.432 2.207-.05 2.638-1.075zm9.594-17.183h-14c-2.761 0-5 2.239-5 5v6.043l5.585 2.349c.596-.39 1.283-.599 2.046-.583l3.017-4.221c.048-2.541 2.122-4.588 4.674-4.588 2.582 0 4.678 2.094 4.678 4.677 0 2.581-2.098 4.703-4.732 4.675l-4.115 3.067-.009.004c-.012 1.962-1.593 3.558-3.561 3.577-1.777.015-3.234-1.249-3.56-2.895l-4.023-1.692v3.587c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-3.678 11.857c-1.752 0-3.179-1.427-3.179-3.18 0-1.753 1.427-3.179 3.179-3.179 1.754 0 3.179 1.426 3.179 3.179s-1.425 3.18-3.179 3.18zm0-.779c1.325 0 2.4-1.077 2.4-2.401 0-1.323-1.075-2.401-2.4-2.401-1.324 0-2.401 1.078-2.401 2.401 0 1.324 1.077 2.401 2.401 2.401z" />
               </svg>
             </Link>
           </div>
@@ -60,14 +41,14 @@ export const Navbar = () => {
             <ul className="flex flex-grow justify-end flex-wrap items-center space-x-5">
               <li>
                 <Link href="/signin">
-                  <div className="font-medium text-gray-200 hover:text-gray-100 px-5 py-3 flex items-center transition duration-150 ease-in-out">
+                  <a className="font-medium text-gray-200 hover:text-gray-100 px-5 py-3 flex items-center transition bg-black border-black hover:border-yellow-500 border-b duration-300 ease-in-out">
                     Sign in
-                  </div>
+                  </a>
                 </Link>
               </li>
               <li>
                 <Link href="/signup">
-                  <a className="inline-flex items-center px-3 py-1.5 rounded text-gray-200 bg-gray-900 hover:bg-gray-800 duration-300 transition">
+                  <a className="inline-flex items-center px-5 py-3  text-gray-200 bg-black border-black hover:border-yellow-500 border-b duration-300 transition">
                     <span>Sign up</span>
                     <svg
                       className="w-3 h-3 fill-current text-gray-400 flex-shrink-0 ml-2 -mr-1"
