@@ -1,14 +1,17 @@
 import "../styles/globals.css";
 
 import Head from "next/head";
+import { AnimateSharedLayout } from "framer-motion";
 
 function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Boiler</title>
+        <title>Steam Clone</title>
       </Head>
-      <Component {...pageProps} />
+      <AnimateSharedLayout>
+        <Component {...pageProps} />
+      </AnimateSharedLayout>
     </>
   );
 }
