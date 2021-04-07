@@ -15,7 +15,7 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`fixed w-full z-30 md:bg-opacity-90 text-white transition duration-300 ease-in-out ${
+      className={`fixed w-full z-30 bg-opacity-75 text-white transition duration-300 ease-in-out ${
         !top && "bg-black blur shadow-lg"
       }`}
     >
