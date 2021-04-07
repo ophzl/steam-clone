@@ -12,8 +12,7 @@ export default function GamePage({}) {
   switch (slug) {
     case "cyberpunk":
       props = {
-        bgUrl:
-          "https://media.melty.fr/article-4313652-so/media.jpg",
+        bgUrl: "https://media.melty.fr/article-4313652-so/media.jpg",
         logoUrl:
           "https://i.shgcdn.com/6c053630-2241-4b11-8b35-2cec9043d819/-/format/auto/-/preview/3000x3000/-/quality/lighter/",
         color: "yellow",
@@ -27,6 +26,21 @@ export default function GamePage({}) {
         color: "blue",
       };
       break;
+    case "adibou":
+      props = {
+        bgUrl: "https://adibou.mrtino.eu/img/adibou2.jpg",
+        logoUrl:
+          "https://images.launchbox-app.com/ddceecee-4038-411f-99a0-be67b2d3f206.png",
+        color: "purple",
+      };
+      break;
+    case "minecraft":
+      props = {
+        bgUrl: "https://i.imgur.com/8QCax1W.png",
+        logoUrl: "https://pngimg.com/uploads/minecraft/minecraft_PNG16.png",
+        color: "red",
+      };
+      break;
 
     default:
       props = {
@@ -34,7 +48,7 @@ export default function GamePage({}) {
           "https://www.wallpapertip.com/wmimgs/181-1813965_cyberpunk-2077-yellow-plain-background-wallpaper.jpg",
         logoUrl:
           "https://i.shgcdn.com/6c053630-2241-4b11-8b35-2cec9043d819/-/format/auto/-/preview/3000x3000/-/quality/lighter/",
-          color: "gray"
+        color: "gray",
       };
       break;
   }
@@ -48,7 +62,7 @@ export default function GamePage({}) {
           style={{ height: "36rem" }}
         >
           <img
-            className="object-fill opacity-75 "
+            className="object-cover w-full opacity-75 "
             src={props.bgUrl}
             alt={slug + "-background"}
           ></img>

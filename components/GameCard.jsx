@@ -17,7 +17,13 @@ export const GameCard = ({ slug, title, bgUrl, logoUrl, color, size }) => {
         <div className="p-5 flex flex-col absolute bottom-0 left-0 ">
           <motion.img
             layoutId={slug + "_logo"}
-            className={"w-auto " + size === "xl" ? "h-56": "h-24"}
+            className={
+              "w-auto " + size === "xl"
+                ? "h-56"
+                : size === "2xl"
+                ? "h-60"
+                : "h-16"
+            }
             src={logoUrl}
             alt={title}
           ></motion.img>
