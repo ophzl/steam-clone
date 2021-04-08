@@ -57,9 +57,8 @@ export default function GamePage({}) {
     <Layout>
       <section className="w-screen min-h-96">
         <motion.div
-          className={`bg-gradient-to-b from-${props.color}-400 to-black w-full overflow-hidden`}
+          className={`bg-gradient-to-b from-${props.color}-400 h-screen/2 xl:h-screen to-black w-full overflow-hidden`}
           layoutId={slug + "_bg"}
-          style={{ height: "36rem" }}
         >
           <img
             className="object-cover w-full opacity-75 "
