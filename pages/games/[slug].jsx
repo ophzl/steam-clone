@@ -41,6 +41,14 @@ export default function GamePage({}) {
         color: "red",
       };
       break;
+      
+      case "half-life-alyx":
+      props = {
+        bgUrl: "https://gameranx.com/wp-content/uploads/2020/01/Half-Life-Alyx-4K-Wallpaper.jpg",
+        logoUrl: "https://i.imgur.com/l6zTfqc.png",
+        color: "gray",
+      };
+      break;
 
     default:
       props = {
@@ -55,20 +63,20 @@ export default function GamePage({}) {
 
   return (
     <Layout>
-      <section className="w-screen min-h-96">
+      <section className="w-full h-96 md:h-auto md:min-h-96 overflow-hidden">
         <motion.div
           className={`bg-gradient-to-b from-${props.color}-400 h-screen/2 xl:h-screen to-black w-full overflow-hidden`}
           layoutId={slug + "_bg"}
         >
           <img
-            className="object-cover w-full opacity-75 "
+            className="object-cover h-full md:h-auto md:w-full opacity-75 xl:h-screen"
             src={props.bgUrl}
             alt={slug + "-background"}
           ></img>
-          <div className="p-5 flex flex-col absolute bottom-0 left-0 ">
+          <div className="p-5 flex flex-col absolute bottom-0 left-0">
             <motion.img
               layoutId={slug + "_logo"}
-              className="w-auto h-32"
+              className="max-h-24 md:w-auto md:h-full md:max-h-32"
               src={props.logoUrl}
               alt={slug + "-logo"}
             ></motion.img>

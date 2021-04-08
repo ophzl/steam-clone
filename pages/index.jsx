@@ -12,7 +12,7 @@ export default function Home({ games }) {
     <Layout>
       <h4 className="w-full text-2xl lg:text-5xl text-white font-semibold tracking-wider text-opacity-90 pt-24 px-16 lg:px-32 py-12 inline-flex items-center">
         Suggestions
-        <hr className="w-full border-yellow-500 opacity-70 ml-12"></hr>
+        {/* <hr className="w-full border-yellow-500 opacity-70 ml-12"></hr> */}
 
       </h4>
       <section className=" flex flex-col px-8 lg:px-24 md:grid grid-cols-3 lg:grid-cols-4 gap-4">
@@ -80,10 +80,18 @@ export default function Home({ games }) {
         <GameCard
           vertical
           slug="cyberpunk"
-          title="Cyberpunk"
+          title="Cyberpunk 2077"
           color="yellow"
           bgUrl="https://media.melty.fr/article-4313652-so/media.jpg"
           logoUrl="https://i.shgcdn.com/6c053630-2241-4b11-8b35-2cec9043d819/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+        ></GameCard>
+        <GameCard
+          vertical
+          slug="half-life-alyx"
+          title="Half-Life Alyx"
+          color="gray"
+          bgUrl="https://gameranx.com/wp-content/uploads/2020/01/Half-Life-Alyx-4K-Wallpaper.jpg"
+          logoUrl="https://i.imgur.com/l6zTfqc.png"
         ></GameCard>
       </section>
     </Layout>
