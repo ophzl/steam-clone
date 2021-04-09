@@ -26,7 +26,7 @@ export const Navbar = () => {
           <div className="flex-shrink-0 mr-4">
             {/* Logo */}
             <span className="hidden md:block">
-              <Link href="/" aria-label="Vapor">
+              <Link href="/" aria-label="Vapor" scroll={false}>
                 <motion.svg
                   layoutId="app_logo"
                   xmlns="http://www.w3.org/2000/svg"
