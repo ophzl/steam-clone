@@ -1,6 +1,6 @@
 import { Layout } from "../components/Layout/Layout";
 import Link from "next/link";
-import { GameCard } from "../components/GameCard";
+import { GameCard } from "../components/Game/GameCard";
 import dynamic from "next/dynamic";
 
 const { MotionSlider } = dynamic(() => import("../components/MotionSlider"), {
@@ -10,7 +10,7 @@ const { MotionSlider } = dynamic(() => import("../components/MotionSlider"), {
 export default function Home({ games }) {
   return (
     <Layout>
-      <h4 className="w-full text-2xl lg:text-5xl text-white font-semibold tracking-wider text-opacity-90 pt-24 px-16 lg:px-32 py-12 inline-flex items-center">
+      <h4 className="w-full text-2xl lg:text-5xl text-white font-light tracking-wider text-opacity-90 pt-24 px-16 lg:px-32 py-12 inline-flex items-center">
         Suggestions
         {/* <hr className="w-full border-yellow-500 opacity-70 ml-12"></hr> */}
 
@@ -49,7 +49,7 @@ export default function Home({ games }) {
             slug="minecraft"
             title="Minecraft"
             color="red"
-            bgUrl="https://i.imgur.com/8QCax1W.png"
+            bgUrl="https://pbs.twimg.com/media/Eauzw3CXgAAJaVR.jpg:large"
             logoUrl="https://pngimg.com/uploads/minecraft/minecraft_PNG16.png"
           ></GameCard>
           {/* </MotionSlider> */}
@@ -72,11 +72,11 @@ export default function Home({ games }) {
         ></GameCard>
       </section>
 
-      <h4 className="w-full text-2xl lg:text-5xl text-white font-semibold tracking-wider text-opacity-90 px-16 lg:px-32 py-12 inline-flex items-center">
+      <h4 className="w-full text-2xl lg:text-5xl text-white font-light tracking-wider text-opacity-90 px-16 lg:px-32 py-12 inline-flex items-center">
         Library
         <hr className="w-full border-yellow-500 opacity-70 ml-12"></hr>
       </h4>
-      <section className="flex flex-col px-8 lg:px-24 md:grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+      <section className="flex flex-col space-y-24 md:space-y-0 px-8 lg:px-24 md:grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
         <GameCard
           vertical
           slug="cyberpunk"

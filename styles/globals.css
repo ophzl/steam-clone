@@ -2,4 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.stroke-dotted {
+  opacity: 0;
+  stroke-dasharray: 4, 5;
+  stroke-width: 1px;
+  transform-origin: 50% 50%;
+  animation: spin 8s infinite linear;
+  transition: opacity 1s ease, stroke-width 1s ease;
+}
+.stroke-solid {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 300;
+  stroke-width: 2px;
+  transition: stroke-dashoffset 1s ease, opacity 1s ease;
+}
+.icon {
+  transform-origin: 50% 50%;
+  transition: transform 200ms ease-out;
+}
+#play:hover .stroke-dotted {
+  stroke-width: 4px;
+  opacity: 1;
+}
+#play:hover .stroke-solid {
+  opacity: 0;
+  stroke-dashoffset: 300;
+}
+#play:hover .icon {
+  transform: scale(1.05);
+}

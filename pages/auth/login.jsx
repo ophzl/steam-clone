@@ -12,7 +12,7 @@ export default function Login() {
           className="w-full h-full object-cover opacity-75"
         />
         <div className="p-16 flex flex-col absolute top-0 left-0 ">
-          <Link href="/" aria-label="Steam">
+          <Link href="/" aria-label="Vapor">
             <motion.svg
               layoutId="app_logo"
               xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@ export default function Login() {
       <div className="bg-black w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center">
         <div className="w-full h-100">
           <div className="mx-auto w-full flex md:hidden">
-            <Link href="/" aria-label="Steam">
+            <Link href="/" aria-label="Vapor">
               <motion.svg
                 layoutId="app_logo_sm"
                 xmlns="http://www.w3.org/2000/svg"

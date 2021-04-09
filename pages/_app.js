@@ -15,7 +15,7 @@ function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Steam Clone</title>
+        <title>Vapor</title>
       </Head>
       <AnimateSharedLayout>
         <Component {...pageProps} />

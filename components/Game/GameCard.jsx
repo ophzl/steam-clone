@@ -20,7 +20,7 @@ export const GameCard = ({
         >
           <div className="w-full h-full rounded-md">
             <img
-              className="object-cover w-full h-full rounded-md  opacity-75 hover:scale-110 group-hover:opacity-25 transition duration-200 "
+              className="object-cover w-full h-full rounded-md  opacity-75 hover:scale-110 group-hover:opacity-50 transition duration-300 "
               src={bgUrl}
               alt={title + "-background"}
               // style={{ height: size === "xl" && "25rem" }}
@@ -49,7 +49,7 @@ export const GameCard = ({
             className={`cursor-pointer rounded-md rounded-b-none group w-full h-full relative bg-gradient-to-bl from-${color}-400 to-black hover:bg-gradient-to-b`}
           >
             <img
-              className="object-cover w-full h-full rounded-md  opacity-75 hover:scale-110 group-hover:opacity-25 transition duration-200 "
+              className="object-cover w-full h-full rounded-md  opacity-75 hover:scale-110 group-hover:opacity-50 transition duration-300 "
               src={bgUrl}
               alt={title + "-background"}
               // style={{ height: size === "xl" && "25rem" }}

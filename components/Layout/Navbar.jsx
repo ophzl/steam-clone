@@ -26,7 +26,7 @@ export const Navbar = () => {
           <div className="flex-shrink-0 mr-4">
             {/* Logo */}
             <span className="hidden md:block">
-              <Link href="/" aria-label="Steam">
+              <Link href="/" aria-label="Vapor">
                 <motion.svg
                   layoutId="app_logo"
                   xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ export const Navbar = () => {
               </Link>
             </span>
             <span className="block md:hidden">
-              <Link href="/" aria-label="Steam">
+              <Link href="/" aria-label="Vapor">
                 <motion.svg
                   layoutId="app_logo_sm"
                   xmlns="http://www.w3.org/2000/svg"
