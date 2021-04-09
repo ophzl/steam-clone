@@ -16,11 +16,11 @@ export const GameCard = ({
       {!vertical ? (
         <motion.div
           layoutId={slug + "_bg"}
-          className={`cursor-pointer group rounded-md w-full h-full relative bg-gradient-to-bl from-${color}-400 to-black hover:bg-gradient-to-b`}
+          className={`cursor-pointer group  w-full h-full relative bg-gradient-to-bl from-${color}-400 to-black hover:bg-gradient-to-b`}
         >
-          <div className="w-full h-full rounded-md">
+          <div className="w-full h-full">
             <img
-              className="object-cover w-full h-full rounded-md  opacity-75 hover:scale-110 group-hover:opacity-50 transition duration-300 "
+              className="object-cover w-full h-full  opacity-75 hover:scale-110 group-hover:opacity-50 transition duration-300 "
               src={bgUrl}
               alt={title + "-background"}
               // style={{ height: size === "xl" && "25rem" }}
@@ -46,10 +46,10 @@ export const GameCard = ({
         <div className="h-72">
           <motion.div
             layoutId={slug + "_bg"}
-            className={`cursor-pointer rounded-md rounded-b-none group w-full h-full relative bg-gradient-to-bl from-${color}-400 to-black hover:bg-gradient-to-b`}
+            className={`cursor-pointer  group w-full h-full relative bg-gradient-to-bl from-${color}-400 to-black hover:bg-gradient-to-b`}
           >
             <img
-              className="object-cover w-full h-full rounded-md  opacity-75 hover:scale-110 group-hover:opacity-50 transition duration-300 "
+              className="object-cover w-full h-full  opacity-75 hover:scale-110 group-hover:opacity-50 transition duration-300 "
               src={bgUrl}
               alt={title + "-background"}
               // style={{ height: size === "xl" && "25rem" }}
@@ -64,7 +64,7 @@ export const GameCard = ({
             </div>
           </motion.div>
 
-          <div className="border-t border-gray-900  text-white bg-white bg-opacity-5 py-5 px-2 rounded-md rounded-t-none">
+          <div className="border-t border-gray-900  text-white bg-white bg-opacity-5 py-5 px-2">
             <h6 className="font-bold text-lg ml-3">{title}</h6>
             <h6 className="mt-1 text-xs">{description}</h6>
           </div>

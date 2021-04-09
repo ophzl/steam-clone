@@ -18,18 +18,23 @@ export default function Home({ games }) {
       <section className=" flex flex-col px-8 lg:px-24 md:grid grid-cols-3 lg:grid-cols-4 gap-4">
         <div className="hidden lg:flex  flex-col justify-center text-center row-span-2 space-y-4 text-gray-200">
           <Link href="/">
-            <a className="px-12 py-5 bg-gray-900 bg-opacity-50 rounded-md h-full flex items-center border-b border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
+            <a className="px-12 py-5 bg-gray-800 h-full flex items-center border-b border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
               Les jeux du moments
             </a>
           </Link>
           <Link href="/">
-            <a className="px-12 py-5 bg-gray-900 bg-opacity-50 border-b rounded-md h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
+            <a className="px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
               Promotions
             </a>
           </Link>
           <Link href="/">
-            <a className="px-12 py-5 bg-gray-900 bg-opacity-50 border-b rounded-md h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
+            <a className="px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
               Jeux indépendants
+            </a>
+          </Link>
+          <Link href="/">
+            <a className="px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
+              Jeux de vos amis
             </a>
           </Link>
         </div>
