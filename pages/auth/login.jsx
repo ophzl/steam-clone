@@ -55,7 +55,7 @@ export default function Login() {
               />
             </div>
             <div className="mt-4">
-              <label className="block text-gray-700">Password</label>
+              <label className="block text-gray-100">Password</label>
               <input
                 type="password"
                 placeholder="Enter Password"

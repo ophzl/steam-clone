@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { Specifications } from "../../components/Game/Specifications";
+import { SubInfo } from "../../components/Game/SubInfo";
 import { Layout } from "../../components/Layout/Layout";
 
-export default function GamePage({}) {
+const GamePage = ({ stars }) => {
+  console.log(stars);
   const router = useRouter();
 
   const { slug } = router.query;
@@ -41,10 +44,11 @@ export default function GamePage({}) {
         color: "red",
       };
       break;
-      
-      case "half-life-alyx":
+
+    case "half-life-alyx":
       props = {
-        bgUrl: "https://gameranx.com/wp-content/uploads/2020/01/Half-Life-Alyx-4K-Wallpaper.jpg",
+        bgUrl:
+          "https://gameranx.com/wp-content/uploads/2020/01/Half-Life-Alyx-4K-Wallpaper.jpg",
         logoUrl: "https://i.imgur.com/l6zTfqc.png",
         color: "gray",
       };
@@ -63,7 +67,7 @@ export default function GamePage({}) {
 
   return (
     <Layout>
-      <section className="w-full h-96 md:h-auto md:min-h-96 overflow-hidden">
+      <section className="relative w-full h-96 md:h-auto md:min-h-96 overflow-hidden">
         <motion.div
           className={`bg-gradient-to-b from-${props.color}-400 h-screen/2 xl:h-screen to-black w-full overflow-hidden`}
           layoutId={slug + "_bg"}
@@ -83,6 +87,49 @@ export default function GamePage({}) {
           </div>
         </motion.div>
       </section>
+
+      <section className="mt-5 text-white">
+        <div className="mx-12 flex flex-col md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          
+          <SubInfo img={props.bgUrl} />
+          <Specifications
+            os="win"
+            title="Minimal specifications"
+            arch="Système d'exploitation et processeur 64 bits nécessaires"
+            osDetails="Windows 7 or 10"
+            processor="Intel Core i5-3570K or AMD FX-8310"
+            ram="8 GB de mémoire"
+            gpu="NVIDIA GeForce GTX 780 or AMD Radeon RX 470"
+            directX="Version 12"
+            disk_space="70 GB d'espace disque disponible"
+            more="In this game you
+            will encounter a variety of visual effects that may provide
+            seizures or loss of consciousness in a minority of people. If you
+            or someone you know experiences any of the above symptoms while
+            playing, stop and seek medical attention immediately."
+          />
+          <Specifications
+            os="win"
+            title="Recommended specifications"
+            arch="Système d'exploitation et processeur 64 bits nécessaires"
+            osDetails="Windows 10"
+            processor="Intel Core i7-4790 or AMD Ryzen 3 3200G"
+            ram="12 GB de mémoire"
+            gpu="GTX 1060 6GB / GTX 1660 Super or Radeon RX 590"
+            directX="Version 12"
+            disk_space="70 GB d'espace disque disponible"
+            more="SSD recommended"
+          />
+        </div>
+      </section>
     </Layout>
   );
-}
+};
+
+GamePage.getInitialProps = async (ctx) => {
+  const res = await fetch("https://api.github.com/repos/vercel/next.js");
+  const json = await res.json();
+  return { stars: json.stargazers_count };
+};
+
+export default GamePage;
