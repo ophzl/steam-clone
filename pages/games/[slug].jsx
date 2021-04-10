@@ -20,6 +20,8 @@ const GamePage = ({ slug }) => {
           "https://i.shgcdn.com/6c053630-2241-4b11-8b35-2cec9043d819/-/format/auto/-/preview/3000x3000/-/quality/lighter/",
         color: "yellow",
         title: "Cyberpunk 2077",
+        buyed: true,
+        price: "69.99$",
       };
       break;
     case "ori":
@@ -29,15 +31,19 @@ const GamePage = ({ slug }) => {
           "https://steamcdn-a.akamaihd.net/steam/apps/261570/logo.png?t=1424994057",
         color: "blue",
         title: "Ori and the Blind Forest",
+        buyed: false,
+        price: "19.99$",
       };
       break;
-    case "adibou":
+    case "adibou-2":
       props = {
         bgUrl: "https://adibou.mrtino.eu/img/adibou2.jpg",
         logoUrl:
           "https://images.launchbox-app.com/ddceecee-4038-411f-99a0-be67b2d3f206.png",
         color: "purple",
-        title: "Adibou 2",
+        title: "Adibou et l'Ombre Verte",
+        buyed: false,
+        price: "5.99$",
       };
       break;
     case "minecraft":
@@ -47,6 +53,8 @@ const GamePage = ({ slug }) => {
         logoUrl: "https://pngimg.com/uploads/minecraft/minecraft_PNG16.png",
         color: "red",
         title: "Minecraft",
+        buyed: false,
+        price: "25.99$",
       };
       break;
 
@@ -57,6 +65,33 @@ const GamePage = ({ slug }) => {
         logoUrl: "https://i.imgur.com/l6zTfqc.png",
         color: "gray",
         title: "Half-Life: Alyx",
+        buyed: true,
+
+        price: "49.99$",
+      };
+      break;
+    case "fifa-21":
+      props = {
+        bgUrl:
+          "https://wallpaperaccess.com/full/1108509.jpg",
+        logoUrl: "https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/fifa21-logo-buy-odhfowwo18r-xl-m.png",
+        color: "gray",
+        title: "Fifa 21",
+        buyed: true,
+
+        price: "49.99$",
+      };
+      break;
+      case "black-ops-cold-war":
+      props = {
+        bgUrl:
+          "https://compass-ssl.xbox.com/assets/f5/61/f5611b5a-0405-4eb3-ad13-acabc6310b7f.jpg?n=242149_GLP-Page-Hero-1084_1920x1080.jpg",
+        logoUrl: "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/zeus/common/logos/zeus-logo-light.png",
+        color: "red",
+        title: "Call of Duty: Black Ops Cold War",
+        buyed: true,
+
+        price: "69.99$",
       };
       break;
 
@@ -68,6 +103,9 @@ const GamePage = ({ slug }) => {
           "https://i.shgcdn.com/6c053630-2241-4b11-8b35-2cec9043d819/-/format/auto/-/preview/3000x3000/-/quality/lighter/",
         color: "gray",
         title: "Cyberpunk 2077",
+
+        buyed: true,
+        price: "69.99$",
       };
       break;
   }
@@ -92,50 +130,143 @@ const GamePage = ({ slug }) => {
               alt={slug + "-logo"}
             ></motion.img>
           </div>
-          <div className="absolute inset-0 flex justify-center items-center invisible md:visible">
-            <motion.button
-              // animate={{ scale: 1 }}
-              whileHover={{ scale: 1.1 }}
-              // transition={{ duration: 1 }}
-              whileTap={{ scale: 0.9 }}
-              className={`h-32 w-32 bg-${props.color}-500 bg-opacity-75 blur-lg rounded-full -mt-16 flex justify-center items-center focus:outline-none`}
-            >
-              <svg
-                version="1.1"
-                id="play"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsXlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
-                viewBox="0 0 100 100"
-                enableBackground="new 0 0 100 100"
-                xmlSpace="preserve"
-                className="w-full h-full"
+          {props.buyed && (
+            <div className="absolute inset-0 flex justify-center items-center invisible md:visible">
+              <motion.button
+                // animate={{ scale: 1 }}
+                whileHover={{ scale: 1.1 }}
+                // transition={{ duration: 1 }}
+                whileTap={{ scale: 0.9 }}
+                className={`h-32 w-32 bg-${props.color}-500 bg-opacity-75 blur-lg rounded-full -mt-16 flex justify-center items-center focus:outline-none`}
               >
-                <path
-                  className="stroke-solid"
-                  fill="none"
-                  stroke="white"
-                  d="M49.9,2.5C23.6,2.8,2.1,24.4,2.5,50.4C2.9,76.5,24.7,98,50.3,97.5c26.4-0.6,47.4-21.8,47.2-47.7C97.3,23.7,75.7,2.3,49.9,2.5"
-                />
-                <path
-                  className="stroke-dotted"
-                  fill="none"
-                  stroke="white"
-                  d="M49.9,2.5C23.6,2.8,2.1,24.4,2.5,50.4C2.9,76.5,24.7,98,50.3,97.5c26.4-0.6,47.4-21.8,47.2-47.7C97.3,23.7,75.7,2.3,49.9,2.5"
-                />
-                <path
-                  className="icon"
-                  fill="white"
-                  d="M38,69c-1,0.5-1.8,0-1.8-1.1V32.1c0-1.1,0.8-1.6,1.8-1.1l34,18c1,0.5,1,1.4,0,1.9L38,69z"
-                />
-              </svg>
-            </motion.button>
-          </div>
+                <svg
+                  version="1.1"
+                  id="play"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 100 100"
+                  enableBackground="new 0 0 100 100"
+                  xmlSpace="preserve"
+                  className="w-full h-full"
+                >
+                  <path
+                    className="stroke-solid"
+                    fill="none"
+                    stroke="white"
+                    d="M49.9,2.5C23.6,2.8,2.1,24.4,2.5,50.4C2.9,76.5,24.7,98,50.3,97.5c26.4-0.6,47.4-21.8,47.2-47.7C97.3,23.7,75.7,2.3,49.9,2.5"
+                  />
+                  <path
+                    className="stroke-dotted"
+                    fill="none"
+                    stroke="white"
+                    d="M49.9,2.5C23.6,2.8,2.1,24.4,2.5,50.4C2.9,76.5,24.7,98,50.3,97.5c26.4-0.6,47.4-21.8,47.2-47.7C97.3,23.7,75.7,2.3,49.9,2.5"
+                  />
+                  <path
+                    className="icon"
+                    fill="white"
+                    d="M38,69c-1,0.5-1.8,0-1.8-1.1V32.1c0-1.1,0.8-1.6,1.8-1.1l34,18c1,0.5,1,1.4,0,1.9L38,69z"
+                  />
+                </svg>
+              </motion.button>
+            </div>
+          )}
         </motion.div>
       </section>
 
-      <section className="mt-6 text-white">
+      <section
+        className={`mt-6 flex flex-col md:grid grid-cols-8 gap-4 md:h-24 mx-6`}
+      >
+        <div className="w-full col-span-3 bg-gray-800 bg-opacity-50 py-4 pl-8 flex flex-col justify-center">
+          <h4
+            className={`text-${props.color}-500 text-2xl tracking-wider font-light `}
+          >
+            {props.title}
+          </h4>
+          {props.buyed ? (
+            <p className="text-gray-600 inline-flex items-center mt-1">
+              Time played:
+              <span className={`text-${props.color}-500 font-medium ml-2`}>
+                16.5 hours
+              </span>
+            </p>
+          ) : (
+            <p className="text-gray-600 inline-flex items-center mt-1">
+              <span className={`text-${props.color}-500 font-medium mr-2`}>
+                5
+              </span>
+              Friends that have {props.title}
+            </p>
+          )}
+        </div>
+        <div
+          className={
+            props.buyed
+              ? "hidden md:flex justify-end w-full col-span-5"
+              : "w-full col-span-5"
+          }
+        >
+          {props.buyed ? (
+            <div className="flex h-full items-center justify-end md:pr-16">
+              <motion.button
+                // animate={{ scale: 1 }}
+                whileHover={{ scale: 1.1 }}
+                // transition={{ duration: 1 }}
+                whileTap={{ scale: 0.9 }}
+                className="bg-green-700 text-white inline-flex items-center px-6 py-3 focus:outline-none text-lg font-medium tracking-wider uppercase"
+              >
+                <svg
+                  className="w-6 h-6 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                Play
+              </motion.button>
+            </div>
+          ) : (
+            <div className="flex flex-row h-full items-center justify-end md:pr-16">
+              <p className="mr-6 text-gray-400 text-xl">
+                Price:
+                <span className={`font-semibold text-${props.color}-400 ml-2`}>
+                  {props.price}
+                </span>
+              </p>
+
+              <motion.button
+                // animate={{ scale: 1 }}
+                whileHover={{ scale: 1.1 }}
+                // transition={{ duration: 1 }}
+                whileTap={{ scale: 0.9 }}
+                className="bg-gray-700 text-white inline-flex items-center px-6 py-3 focus:outline-none text-lg font-medium tracking-wider uppercase"
+              >
+                <svg
+                  className="w-6 h-6 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                Purchase
+              </motion.button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="mt-6 text-gray-200">
         <div className="mx-6 flex flex-col md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <SubInfo
             img={props.bgUrl}

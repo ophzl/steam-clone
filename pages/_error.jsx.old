@@ -1,0 +1,44 @@
+import Link from "next/link";
+import { Layout } from "../components/Layout/Layout";
+
+function Error({ statusCode }) {
+  return (
+    <Layout noPadding>
+      {/* <h4 className="w-full text-2xl lg:text-5xl text-white font-light tracking-wider text-opacity-90 pt-24 px-16 lg:px-32 py-12 inline-flex items-center">
+        {statusCode
+          ? `An error ${statusCode} occurred on server`
+          : "An error occurred on client"}
+      </h4> */}
+      <div>
+        <div className="h-screen overflow-hidden w-full flex flex-wrap justify-center content-center items-center absolute z-0">
+          <h2 className="text-white opacity-20 md:text-720px text-4xl">
+            {statusCode}
+          </h2>
+        </div>
+        <div className="h-screen w-full flex flex-wrap justify-center content-end md:content-center items-end pb-24 md:pb-0 md:items-center relative z-10">
+          <div className="p-6 text-center text-white">
+            <h2 className="uppercase text-xl lg:text-5xl font-black">
+              We are sorry, Page not found!
+            </h2>
+            <p className="mt-3 uppercase text-sm lg:text-base text-gray-300">
+              The page you are looking for might have been removed had its name
+              changed or is temporarily unavailable.
+            </p>
+            <Link href="/">
+              <a className="mt-6 bg-yellow-500 hover:bg-yellow-700 text-white font-light py-4 px-6 rounded-full inline-block uppercase shadow-2xl transition duration-300">
+                Back To Homepage
+              </a>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
+}
+
+Error.getInitialProps = ({ res, err }) => {
+  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+  return { statusCode };
+};
+
+export default Error;

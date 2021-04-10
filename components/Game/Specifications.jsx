@@ -13,7 +13,7 @@ export const Specifications = ({
 }) => {
   return (
     <div
-      className="w-full flex text-sm flex-col bg-gray-800 p-5 text-white"
+      className="w-full flex text-sm flex-col bg-gray-800 p-5 "
       data-os={os}
     >
       <h3 className="font-light text-xl mb-4">{title}</h3>

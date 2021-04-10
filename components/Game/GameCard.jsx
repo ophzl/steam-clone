@@ -64,9 +64,9 @@ export const GameCard = ({
             </div>
           </motion.div>
 
-          <div className="border-t border-gray-900  text-white bg-white bg-opacity-5 py-5 px-2">
-            <h6 className="font-bold text-lg ml-3">{title}</h6>
-            <h6 className="mt-1 text-xs">{description}</h6>
+          <div className="border-t border-gray-900  text-gray-300 bg-gray-800 py-5 px-2">
+            <h6 className="font-bold text-sm ml-3 truncate">{title}</h6>
+            {/* <h6 className="mt-1 text-xs">{description}</h6> */}
           </div>
         </div>
       )}

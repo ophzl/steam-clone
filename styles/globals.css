@@ -36,3 +36,7 @@
 #play:hover .icon {
   transform: scale(1.05);
 }
+
+.md\:text-720px {
+  font-size: 720px;
+}

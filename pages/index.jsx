@@ -13,27 +13,26 @@ export default function Home({ games }) {
       <h4 className="w-full text-2xl lg:text-5xl text-white font-light tracking-wider text-opacity-90 pt-24 px-16 lg:px-32 py-12 inline-flex items-center">
         Suggestions
         {/* <hr className="w-full border-yellow-500 opacity-70 ml-12"></hr> */}
-
       </h4>
       <section className=" flex flex-col px-8 lg:px-24 md:grid grid-cols-3 lg:grid-cols-4 gap-4">
         <div className="hidden lg:flex  flex-col justify-center text-center row-span-2 space-y-4 text-gray-200">
           <Link href="/">
-            <a className="px-12 py-5 bg-gray-800 h-full flex items-center border-b border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
+            <a className="px-4 xl:px-12 py-5 bg-gray-800 h-full flex items-center border-b border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
               Les jeux du moments
             </a>
           </Link>
           <Link href="/">
-            <a className="px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
+            <a className="px-4 xl:px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
               Promotions
             </a>
           </Link>
           <Link href="/">
-            <a className="px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
+            <a className="px-4 xl:px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
               Jeux indépendants
             </a>
           </Link>
           <Link href="/">
-            <a className="px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
+            <a className="px-4 xl:px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
               Jeux de vos amis
             </a>
           </Link>
@@ -69,7 +68,7 @@ export default function Home({ games }) {
         ></GameCard>
 
         <GameCard
-          slug="adibou"
+          slug="adibou-2"
           title="Adibou et l'Ombre verte"
           color="purple"
           bgUrl="https://adibou.mrtino.eu/img/adibou2.jpg"
@@ -97,6 +96,22 @@ export default function Home({ games }) {
           color="gray"
           bgUrl="https://gameranx.com/wp-content/uploads/2020/01/Half-Life-Alyx-4K-Wallpaper.jpg"
           logoUrl="https://i.imgur.com/l6zTfqc.png"
+        ></GameCard>
+        <GameCard
+          vertical
+          slug="fifa-21"
+          title="Fifa 21"
+          color="gray"
+          bgUrl="https://wallpaperaccess.com/full/1108509.jpg"
+          logoUrl="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/fifa21-logo-buy-odhfowwo18r-xl-m.png"
+        ></GameCard>
+        <GameCard
+          vertical
+          slug="black-ops-cold-war"
+          title="Call of Duty: Black Ops Cold War"
+          color="red"
+          bgUrl="https://compass-ssl.xbox.com/assets/f5/61/f5611b5a-0405-4eb3-ad13-acabc6310b7f.jpg?n=242149_GLP-Page-Hero-1084_1920x1080.jpg"
+          logoUrl="https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/zeus/common/logos/zeus-logo-light.png"
         ></GameCard>
       </section>
     </Layout>
