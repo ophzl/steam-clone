@@ -21,19 +21,19 @@ export default function Home({ games }) {
               Les jeux du moments
             </a>
           </Link>
-          <Link href="/">
+          <Link href="/store/promotions">
             <a className="px-4 xl:px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
               Promotions
             </a>
           </Link>
-          <Link href="/">
+          <Link href="/store/independants">
             <a className="px-4 xl:px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
-              Jeux indépendants
+              Independants games
             </a>
           </Link>
-          <Link href="/">
+          <Link href="/store/friends">
             <a className="px-4 xl:px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
-              Jeux de vos amis
+              Friends games
             </a>
           </Link>
         </div>
@@ -112,6 +112,14 @@ export default function Home({ games }) {
           color="red"
           bgUrl="https://compass-ssl.xbox.com/assets/f5/61/f5611b5a-0405-4eb3-ad13-acabc6310b7f.jpg?n=242149_GLP-Page-Hero-1084_1920x1080.jpg"
           logoUrl="https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/zeus/common/logos/zeus-logo-light.png"
+        ></GameCard>
+        <GameCard
+          vertical
+          slug="bioshock-collection"
+          title="BioShock Collection"
+          color="blue"
+          bgUrl="https://wallpapercave.com/wp/wp5251596.jpg"
+          logoUrl="https://lh3.googleusercontent.com/proxy/nIABEmqz7P8Wj1ypm6oNSYpqtuVrd4H8-xLSOodEr1OpEcC0_G9TqQ7ldJooJKlhOZNCOrHjqx2VcEGcamHAA_l7lprDsBAgF3Rf9kp_ltVl1A0k1fB3RkpVmq5B0EMM"
         ></GameCard>
       </section>
     </Layout>

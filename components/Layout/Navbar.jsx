@@ -54,6 +54,7 @@ export const Navbar = () => {
           </div>
 
           {/* Site navigation */}
+          {/* TODO: fix galaxy fold display */}
           <nav className="flex flex-grow">
             <ul className="flex flex-grow justify-end flex-wrap items-center md:space-x-5">
               <li className="hidden md:block">
@@ -87,7 +88,7 @@ export const Navbar = () => {
                   <a className="inline-flex items-center px-5 py-3  text-gray-200 bg-black border-black hover:border-yellow-500 border-b duration-300 transition">
                     <span>Sign up</span>
                     <svg
-                      className="w-3 h-3 fill-current text-gray-400 flex-shrink-0 ml-2 -mr-1"
+                      className="w-3 h-3 fill-current text-gray-400 flex-shrink-0 ml-2 -mr-1 hidden md:block"
                       viewBox="0 0 12 12"
                       xmlns="http://www.w3.org/2000/svg"
                     >

@@ -72,9 +72,9 @@ const GamePage = ({ slug }) => {
       break;
     case "fifa-21":
       props = {
-        bgUrl:
-          "https://wallpaperaccess.com/full/1108509.jpg",
-        logoUrl: "https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/fifa21-logo-buy-odhfowwo18r-xl-m.png",
+        bgUrl: "https://wallpaperaccess.com/full/1108509.jpg",
+        logoUrl:
+          "https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/fifa21-logo-buy-odhfowwo18r-xl-m.png",
         color: "gray",
         title: "Fifa 21",
         buyed: true,
@@ -82,16 +82,29 @@ const GamePage = ({ slug }) => {
         price: "49.99$",
       };
       break;
-      case "black-ops-cold-war":
+    case "black-ops-cold-war":
       props = {
         bgUrl:
           "https://compass-ssl.xbox.com/assets/f5/61/f5611b5a-0405-4eb3-ad13-acabc6310b7f.jpg?n=242149_GLP-Page-Hero-1084_1920x1080.jpg",
-        logoUrl: "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/zeus/common/logos/zeus-logo-light.png",
+        logoUrl:
+          "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/zeus/common/logos/zeus-logo-light.png",
         color: "red",
         title: "Call of Duty: Black Ops Cold War",
         buyed: true,
 
         price: "69.99$",
+      };
+      break;
+    case "bioshock-collection":
+      props = {
+        bgUrl: "https://wallpapercave.com/wp/wp5251596.jpg",
+        logoUrl:
+          "https://lh3.googleusercontent.com/proxy/nIABEmqz7P8Wj1ypm6oNSYpqtuVrd4H8-xLSOodEr1OpEcC0_G9TqQ7ldJooJKlhOZNCOrHjqx2VcEGcamHAA_l7lprDsBAgF3Rf9kp_ltVl1A0k1fB3RkpVmq5B0EMM",
+        color: "blue",
+        title: "BioShock Collection",
+        buyed: true,
+
+        price: "49.99$",
       };
       break;
 
@@ -114,7 +127,7 @@ const GamePage = ({ slug }) => {
     <Layout>
       <section className="relative w-full h-96 md:h-auto md:min-h-96 overflow-hidden">
         <motion.div
-          className={`bg-gradient-to-b from-${props.color}-400 h-screen/2 xl:h-screen to-black w-full overflow-hidden`}
+          className={`bg-gradient-to-b from-${props.color}-400 h-screen/2 xl:h-screen 2xl:h-screen/2 to-black w-full overflow-hidden`}
           layoutId={slug + "_bg"}
         >
           <img
@@ -179,9 +192,7 @@ const GamePage = ({ slug }) => {
         className={`mt-6 flex flex-col md:grid grid-cols-8 gap-4 md:h-24 mx-6`}
       >
         <div className="w-full col-span-3 bg-gray-800 bg-opacity-50 py-4 pl-8 flex flex-col justify-center">
-          <h4
-            className={`text-${props.color}-500 text-2xl tracking-wider font-light `}
-          >
+          <h4 className="text-gray-200 text-2xl tracking-wider font-light">
             {props.title}
           </h4>
           {props.buyed ? (
