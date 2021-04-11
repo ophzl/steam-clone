@@ -33,3 +33,6 @@ yarn.lock
 
 # vercel
 .vercel
+
+public/sw.js
+public/workbox-*

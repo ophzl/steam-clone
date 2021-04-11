@@ -1,0 +1,8 @@
+{
+    "name": "Vapor",
+    "theme_color": "#ffb700",
+    "background_color": "#000000",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/"
+  }
