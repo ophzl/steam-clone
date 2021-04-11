@@ -1,6 +1,6 @@
 import { Layout } from "../../components/Layout/Layout";
 
-export const Friends = ({}) => {
+const Friends = ({}) => {
   return (
     <Layout>
       <div className="pt-24">
@@ -11,3 +11,5 @@ export const Friends = ({}) => {
     </Layout>
   );
 };
+
+export default Friends;
