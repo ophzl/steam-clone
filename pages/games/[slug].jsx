@@ -150,7 +150,7 @@ const GamePage = ({ slug }) => {
                 whileHover={{ scale: 1.1 }}
                 // transition={{ duration: 1 }}
                 whileTap={{ scale: 0.9 }}
-                className={`h-32 w-32 bg-${props.color}-500 bg-opacity-75 blur-lg rounded-full -mt-16 flex justify-center items-center focus:outline-none`}
+                className={`h-32 w-32  bg-opacity-75 blur-lg rounded-full -mt-16 flex justify-center items-center focus:outline-none`}
               >
                 <svg
                   version="1.1"

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-export default function Login() {
+export default function Forgot() {
   return (
     <section className="bg-black flex flex-col md:flex-row h-screen items-center">
       <div className="bg-black hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
@@ -41,10 +41,10 @@ export default function Login() {
             </Link>
           </div>
           <h1 className="text-xl md:text-2xl text-white font-bold leading-tight mt-12">
-            Log in to your account
+            Forgot your password ?
           </h1>
           <form className="mt-6" action="#" method="POST">
-            <div>
+            <div className="">
               <label className="block text-gray-100">Email Address</label>
               <input
                 type="email"
@@ -54,28 +54,12 @@ export default function Login() {
                 required
               />
             </div>
-            <div className="mt-4">
-              <label className="block text-gray-100">Password</label>
-              <input
-                type="password"
-                placeholder="p@ssw0rd!"
-                minLength={6}
-                className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
-                required
-              />
-            </div>
-            <div className="text-right mt-2">
-              <Link href="/auth/forgot">
-                <a className="text-sm font-semibold text-gray-200 hover:text-yellow-700 focus:text-yellow-700">
-                  Forgot Password?
-                </a>
-              </Link>
-            </div>
+
             <button
               type="submit"
               className="w-full block bg-yellow-500 hover:bg-yellow-400 focus:bg-yellow-400 text-white font-semibold rounded-lg px-4 py-3 mt-6 transition duration-300"
             >
-              Log In
+              Reset your password
             </button>
           </form>
           <hr className="my-6 border-gray-800 w-full" />
@@ -120,10 +104,10 @@ export default function Login() {
             </div>
           </button>
           <p className="mt-8 text-gray-300">
-            Need an account?
-            <Link href="/auth/register">
+            Already have an account?
+            <Link href="/auth/login">
               <a className="text-yellow-500 hover:text-yellow-700 font-semibold transition duration-300 ml-2">
-                Create an account
+                Log into your account
               </a>
             </Link>
           </p>
