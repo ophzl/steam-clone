@@ -43,7 +43,7 @@ export const GameCard = ({
           </div>
         </motion.div>
       ) : (
-        <div className="h-72">
+        <div className="h-72 pb-16 portrait:pb-0">
           <motion.div
             layoutId={slug + "_bg"}
             className={`cursor-pointer  group w-full h-full relative bg-gradient-to-bl from-${color}-400 to-black hover:bg-gradient-to-b`}

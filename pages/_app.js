@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 
 import Head from "next/head";
-import { AnimateSharedLayout } from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import dynamic from "next/dynamic";
 
 const Loader = dynamic(
@@ -47,7 +47,9 @@ function App({ Component, pageProps }) {
         <meta name="theme-color" content="#ffb700" />
       </Head>
       <AnimateSharedLayout>
-        <Component {...pageProps} />
+        <AnimatePresence exitBeforeEnter>
+          <Component {...pageProps} />
+        </AnimatePresence>
         <Loader></Loader>
       </AnimateSharedLayout>
     </>

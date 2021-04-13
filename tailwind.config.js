@@ -28,6 +28,9 @@ module.exports = {
         "screen/4": "calc(100vh / 4)",
         "screen/5": "calc(100vh / 5)",
       }),
+      screens: {
+        portrait: { raw: "(orientation: portrait)" },
+      },
     },
   },
   variants: {
