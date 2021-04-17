@@ -11,28 +11,28 @@ export default function Home({ games }) {
   return (
     <Layout>
       <h4 className="w-full text-2xl lg:text-5xl text-white font-light tracking-wider text-opacity-90 pt-24 px-16 lg:px-32 py-12 inline-flex items-center">
-        Suggestions
+        Featured
         {/* <hr className="w-full border-yellow-500 opacity-70 ml-12"></hr> */}
       </h4>
       <section className=" flex flex-col px-8 lg:px-24 md:grid grid-cols-3 lg:grid-cols-4 gap-4">
         <div className="hidden lg:flex  flex-col justify-center text-center row-span-2 space-y-4 text-gray-200">
           <Link href="/">
-            <a className="px-4 xl:px-12 py-5 bg-gray-800 h-full flex items-center border-b border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
+            <a className="px-4 xl:px-12 py-5 bg-black bg-opacity-70 h-full flex items-center border-b border-black hover:bg-opacity-20 hover:border-yellow-400 transition duration-500">
               Les jeux du moments
             </a>
           </Link>
           <Link href="/store/promotions">
-            <a className="px-4 xl:px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
+            <a className="px-4 xl:px-12 py-5 bg-black bg-opacity-70 h-full flex items-center border-b border-black hover:bg-opacity-20 hover:border-yellow-400 transition duration-500">
               Promotions
             </a>
           </Link>
           <Link href="/store/independants">
-            <a className="px-4 xl:px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
+            <a className="px-4 xl:px-12 py-5 bg-black bg-opacity-70 h-full flex items-center border-b border-black hover:bg-opacity-20 hover:border-yellow-400 transition duration-500">
               Independants games
             </a>
           </Link>
           <Link href="/store/friends">
-            <a className="px-4 xl:px-12 py-5 bg-gray-800 border-b h-full flex items-center border-black hover:bg-white hover:bg-opacity-5 hover:border-yellow-400 transition duration-500">
+            <a className="px-4 xl:px-12 py-5 bg-black bg-opacity-70 h-full flex items-center border-b border-black hover:bg-opacity-20 hover:border-yellow-400 transition duration-500">
               Friends games
             </a>
           </Link>
@@ -74,6 +74,14 @@ export default function Home({ games }) {
           bgUrl="https://adibou.mrtino.eu/img/adibou2.jpg"
           logoUrl="https://images.launchbox-app.com/ddceecee-4038-411f-99a0-be67b2d3f206.png"
         ></GameCard>
+
+        <div className="col-start-3 lg:col-start-4">
+          <Link href="/store">
+            <a className="bg-black bg-opacity-70 py-5 w-full inline-flex justify-center items-center text-gray-200 border-b border-black  hover:bg-opacity-20 hover:border-yellow-400 transition duration-500">
+              Store
+            </a>
+          </Link>
+        </div>
       </section>
 
       <h4 className="w-full text-2xl lg:text-5xl text-white font-light tracking-wider text-opacity-90 px-16 lg:px-32 py-12 inline-flex items-center">

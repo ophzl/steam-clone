@@ -5,6 +5,14 @@ import { motion } from "framer-motion";
 export const Navbar = () => {
   const [top, setTop] = useState(true);
 
+  const [installed, setInstalled] = useState(false);
+  const [auth, setAuth] = useState({
+    uuid: "floriaaan",
+    fullname: "Florian Leroux",
+    email: "florian@leroux.fr",
+    friends: [{ uuid: "ophzl", fullname: "oph@zl.fr" }],
+  });
+
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {
     const scrollHandler = () => {
@@ -57,49 +65,57 @@ export const Navbar = () => {
           {/* TODO: fix galaxy fold display */}
           <nav className="flex flex-grow">
             <ul className="flex flex-grow justify-end flex-wrap items-center md:space-x-5">
-              <li className="hidden md:block">
-                <Link href="/install">
-                  <a className="font-medium text-gray-200 hover:text-gray-100 px-5 py-3 flex items-center transition hover:bg-green-600  duration-300 ease-in-out">
-                    <svg
-                      className="w-6 h-6 mr-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Install
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/auth/login">
-                  <a className="font-medium text-gray-200 hover:text-gray-100 px-5 py-3 flex items-center transition bg-black border-black hover:border-yellow-500 border-b duration-300 ease-in-out">
-                    Sign in
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/auth/register">
-                  <a className="inline-flex items-center px-5 py-3  text-gray-200 bg-black border-black hover:border-yellow-500 border-b duration-300 transition">
-                    <span>Sign up</span>
-                    <svg
-                      className="w-3 h-3 fill-current text-gray-400 flex-shrink-0 ml-2 -mr-1 hidden md:block"
-                      viewBox="0 0 12 12"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z"
-                        fillRule="nonzero"
-                      />
-                    </svg>
-                  </a>
-                </Link>
-              </li>
+              {!installed && (
+                <li className="hidden md:block">
+                  <Link href="/install">
+                    <a className="font-medium text-gray-200 hover:text-gray-100 px-5 py-3 flex items-center transition hover:bg-green-600  duration-300 ease-in-out">
+                      <svg
+                        className="w-6 h-6 mr-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      Install
+                    </a>
+                  </Link>
+                </li>
+              )}
+              {auth ? (
+                <li>{auth.fullname} - {auth.uuid}</li>
+              ) : (
+                <>
+                  <li>
+                    <Link href="/auth/login">
+                      <a className="font-medium text-gray-200 hover:text-gray-100 px-5 py-3 flex items-center transition bg-black border-black hover:border-yellow-500 border-b duration-300 ease-in-out">
+                        Sign in
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/auth/register">
+                      <a className="inline-flex items-center px-5 py-3  text-gray-200 bg-black border-black hover:border-yellow-500 border-b duration-300 transition">
+                        <span>Sign up</span>
+                        <svg
+                          className="w-3 h-3 fill-current text-gray-400 flex-shrink-0 ml-2 -mr-1 hidden md:block"
+                          viewBox="0 0 12 12"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z"
+                            fillRule="nonzero"
+                          />
+                        </svg>
+                      </a>
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </nav>
         </div>
