@@ -1,5 +1,5 @@
-import 'semantic-ui-css/semantic.min.css'
 import "../styles/globals.css";
+import "../styles/backgrounds.css";
 
 
 import Head from "next/head";

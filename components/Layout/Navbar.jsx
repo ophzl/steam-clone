@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { MD5 } from "../../libs/md5";
-import { Dropdown } from "semantic-ui-react";
+import { Dropdown } from "../Dropdown/Dropdown";
 
 export const Navbar = () => {
   const [top, setTop] = useState(true);
@@ -14,6 +14,8 @@ export const Navbar = () => {
     email: "florian.leroux3@laposte.net",
     friends: [{ uuid: "ophzl", fullname: "oph@zl.fr" }],
   });
+
+  const [authOpen, setAuthOpen] = useState(false);
 
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {
@@ -90,21 +92,12 @@ export const Navbar = () => {
               )}
               {auth ? (
                 <li>
-                  <Dropdown
-                    trigger={
-                      <img
-                        src={`https://www.gravatar.com/avatar/${MD5(
-                          auth.email
-                        )}`}
-                        className="w-12 h-12 rounded-full object-cover"
-                      ></img>
-                    }
-                    options={[
-                      { key: "profile", text: "Your Profile" },
-                      { key: "stars", text: "Your Stars" },
-                      { key: "explore", text: "Explore" },
-                    ]}
-                  />
+                  <img onClick={() => setAuthOpen(!authOpen)}
+                    src={`https://www.gravatar.com/avatar/${MD5(auth.email)}`}
+                    className="w-12 h-12 rounded-full object-cover cursor-pointer"
+                  ></img>
+
+                  {authOpen && <Dropdown.Auth auth={auth} />}
                 </li>
               ) : (
                 <>
