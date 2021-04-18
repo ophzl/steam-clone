@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { MD5 } from "../../libs/md5";
+import { Dropdown } from "semantic-ui-react";
 
 export const Navbar = () => {
   const [top, setTop] = useState(true);
@@ -9,7 +11,7 @@ export const Navbar = () => {
   const [auth, setAuth] = useState({
     uuid: "floriaaan",
     fullname: "Florian Leroux",
-    email: "florian@leroux.fr",
+    email: "florian.leroux3@laposte.net",
     friends: [{ uuid: "ophzl", fullname: "oph@zl.fr" }],
   });
 
@@ -87,7 +89,23 @@ export const Navbar = () => {
                 </li>
               )}
               {auth ? (
-                <li>{auth.fullname} - {auth.uuid}</li>
+                <li>
+                  <Dropdown
+                    trigger={
+                      <img
+                        src={`https://www.gravatar.com/avatar/${MD5(
+                          auth.email
+                        )}`}
+                        className="w-12 h-12 rounded-full object-cover"
+                      ></img>
+                    }
+                    options={[
+                      { key: "profile", text: "Your Profile" },
+                      { key: "stars", text: "Your Stars" },
+                      { key: "explore", text: "Explore" },
+                    ]}
+                  />
+                </li>
               ) : (
                 <>
                   <li>

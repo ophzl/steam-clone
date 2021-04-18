@@ -127,7 +127,7 @@ export default function Home({ games }) {
           title="BioShock Collection"
           color="blue"
           bgUrl="https://wallpapercave.com/wp/wp5251596.jpg"
-          logoUrl="https://lh3.googleusercontent.com/proxy/nIABEmqz7P8Wj1ypm6oNSYpqtuVrd4H8-xLSOodEr1OpEcC0_G9TqQ7ldJooJKlhOZNCOrHjqx2VcEGcamHAA_l7lprDsBAgF3Rf9kp_ltVl1A0k1fB3RkpVmq5B0EMM"
+          logoUrl="https://img2.pngio.com/bioshock-logo-transparent-png-clipart-free-download-ywd-bioshock-the-collection-png-980_485.png"
         ></GameCard>
       </section>
     </Layout>

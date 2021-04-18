@@ -1,4 +1,6 @@
+import 'semantic-ui-css/semantic.min.css'
 import "../styles/globals.css";
+
 
 import Head from "next/head";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
