@@ -3,17 +3,14 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { MD5 } from "../../libs/md5";
 import { Dropdown } from "../Dropdown/Dropdown";
+import { useAuth } from "../../hooks/useAuth";
 
 export const Navbar = () => {
   const [top, setTop] = useState(true);
 
   const [installed, setInstalled] = useState(false);
-  const [auth, setAuth] = useState({
-    uuid: "floriaaan",
-    fullname: "Florian Leroux",
-    email: "florian.leroux3@laposte.net",
-    friends: [{ uuid: "ophzl", fullname: "oph@zl.fr" }],
-  });
+
+  const { user, setUser } = useAuth();
 
   const [authOpen, setAuthOpen] = useState(false);
 
@@ -90,14 +87,18 @@ export const Navbar = () => {
                   </Link>
                 </li>
               )}
-              {auth ? (
+              {user ? (
                 <li>
-                  <img onClick={() => setAuthOpen(!authOpen)}
-                    src={`https://www.gravatar.com/avatar/${MD5(auth.email)}`}
+                  <motion.img
+                    onClick={() => setAuthOpen(!authOpen)}
+                    src={`https://www.gravatar.com/avatar/${MD5(user.email)}`}
                     className="w-12 h-12 rounded-full object-cover cursor-pointer"
-                  ></img>
+                    initial={{ scale: 1 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.9 }}
+                  ></motion.img>
 
-                  {authOpen && <Dropdown.Auth auth={auth} />}
+                  {authOpen && <Dropdown.Auth />}
                 </li>
               ) : (
                 <>

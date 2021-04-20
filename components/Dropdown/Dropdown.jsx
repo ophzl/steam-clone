@@ -4,6 +4,10 @@ import { MD5 } from "../../libs/md5";
 import { Chevron } from "../Icons/Chevron";
 
 import Link from "next/link";
+import { useTheme } from "../../hooks/useTheme";
+import { Check } from "../Icons/Check";
+import { setSettingState } from "../../libs/localStorage";
+import { useAuth } from "../../hooks/useAuth";
 
 export function Dropdown() {}
 
@@ -19,10 +23,13 @@ Dropdown.Details = ({ children }) => (
   </div>
 );
 
-Dropdown.Auth = ({ auth }) => {
+Dropdown.Auth = () => {
   const [activeMenu, setActiveMenu] = useState("main");
   const [menuHeight, setMenuHeight] = useState(null);
   const dropdownRef = useRef(null);
+
+  const { background, setBackground, theme, setTheme } = useTheme();
+  const { user, disconnect } = useAuth();
 
   useEffect(() => {
     setMenuHeight(dropdownRef.current?.firstChild.offsetHeight + 30);
@@ -35,11 +42,11 @@ Dropdown.Auth = ({ auth }) => {
 
   function DropdownItem({ goToMenu, leftIcon, rightIcon, height, children }) {
     return (
-      <a
+      <div
         className={`menu-item group ${
           height ? height : "h-12"
-        } inline-flex items-center p-2 px-5 hover:bg-gray-700 transition-colors duration-200 ${
-          goToMenu ? " cursor-pointer" : " cursor-default"
+        } inline-flex w-full items-center p-2 px-5 hover:bg-gray-700 transition-colors duration-200 ${
+          goToMenu ? " cursor-pointer" : ""
         }`}
         onClick={() => goToMenu && setActiveMenu(goToMenu)}
       >
@@ -51,8 +58,8 @@ Dropdown.Auth = ({ auth }) => {
           <span className="h-8 w-8 group-hover:bg-gray-600 rounded-full bg-gray-700 ml-auto flex items-center justify-center transition duration-300">
             {rightIcon}
           </span>
-        )}{" "}
-      </a>
+        )}
+      </div>
     );
   }
 
@@ -70,73 +77,81 @@ Dropdown.Auth = ({ auth }) => {
         onEnter={calcHeight}
       >
         <div className="w-full flex flex-col">
-          <DropdownItem
-            leftIcon={
-              <img
-                src={`https://www.gravatar.com/avatar/${MD5(auth.email)}`}
-              ></img>
-            }
-            height="h-full"
-          >
-            <Link href="/profile">
-              <a className="text-base font-bold">{auth.fullname}</a>
-            </Link>
-          </DropdownItem>
+          <Link href="/profile">
+            <a className="w-full cursor-pointer">
+              <DropdownItem
+                leftIcon={
+                  <img
+                    src={`https://www.gravatar.com/avatar/${MD5(user.email)}`}
+                  ></img>
+                }
+                height="h-full"
+              >
+                <span className="text-base font-bold">{user.fullname}</span>
+              </DropdownItem>
+            </a>
+          </Link>
 
           <Dropdown.Divider></Dropdown.Divider>
-          <DropdownItem
-            leftIcon={
-              <svg
-                className="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
+          <Link href="/library">
+            <a className="w-full cursor-pointer">
+              <DropdownItem
+                leftIcon={
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                  </svg>
+                }
               >
-                <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
-              </svg>
-            }
-          >
-            <Link href="/library">
-              <a>Library</a>
-            </Link>
-          </DropdownItem>
-          <DropdownItem
-            leftIcon={
-              <svg
-                className="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
+                <span>Library</span>
+              </DropdownItem>
+            </a>
+          </Link>
+          <Link href="/store">
+            <a className="w-full cursor-pointer">
+              <DropdownItem
+                leftIcon={
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                }
               >
-                <path
-                  fillRule="evenodd"
-                  d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            }
-          >
-            <Link href="/store">
-              <a>Store</a>
-            </Link>
-          </DropdownItem>
-          <DropdownItem
-            leftIcon={
-              <svg
-                className="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
+                <span>Store</span>
+              </DropdownItem>
+            </a>
+          </Link>
+          <Link href="/messages">
+            <a className="w-full cursor-pointer">
+              <DropdownItem
+                leftIcon={
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                    <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+                  </svg>
+                }
               >
-                <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
-                <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
-              </svg>
-            }
-          >
-            <Link href="/messages">
-              <a>Messages</a>
-            </Link>
-          </DropdownItem>
+                Messages
+              </DropdownItem>
+            </a>
+          </Link>
           <Dropdown.Divider />
           <DropdownItem
             leftIcon={
@@ -178,24 +193,26 @@ Dropdown.Auth = ({ auth }) => {
           >
             Experimental
           </DropdownItem>
-          <DropdownItem
-            leftIcon={
-              <svg
-                className="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            }
-          >
-            Log out
-          </DropdownItem>
+          <div className="w-full cursor-pointer" onClick={disconnect}>
+            <DropdownItem
+              leftIcon={
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              }
+            >
+              Log out
+            </DropdownItem>
+          </div>
         </div>
       </CSSTransition>
 
@@ -249,7 +266,6 @@ Dropdown.Auth = ({ auth }) => {
           </DropdownItem>
           <Dropdown.Divider />
           <h3 className="text-center font-bold my-2">Experimental</h3>
-
         </div>
       </CSSTransition>
 
@@ -266,14 +282,69 @@ Dropdown.Auth = ({ auth }) => {
           </DropdownItem>
           <Dropdown.Divider />
           <h3 className="text-center font-bold my-2">Appearance</h3>
+
+          <h4 className="text-gray-400 mx-3 font-extrabold">Color Theme</h4>
           <div className="flex flex-col md:grid grid-cols-2 gap-2 p-2 px-3">
-            <div className="flex flex-col group hover:bg-gray-700 p-2 rounded duration-300 transition">
-              <p className="text-sm font-bold text-gray-500 group-hover:text-gray-200 mb-3 duration-300 transition">Topography</p>
-              <div className="h-20 bg-topography rounded"></div>
+            <div
+              className="flex flex-col group hover:bg-gray-700 p-2 rounded duration-300 transition"
+              onClick={() =>
+                setSettingState("vapor_theme", "bg-white", setTheme)
+              }
+            >
+              <p className="text-sm font-bold text-gray-500 group-hover:text-gray-200 mb-3 duration-300 transition">
+                Light
+              </p>
+              <div className="h-12 bg-white rounded relative">
+                {theme === "bg-white" && <Check.Selected />}
+              </div>
             </div>
-            <div className="flex flex-col group hover:bg-gray-700 p-2 rounded duration-300 transition">
-              <p className="text-sm font-bold text-gray-500 group-hover:text-gray-200 mb-3 duration-300 transition">Lines in motion</p>
-              <div className="h-20 bg-lines rounded"></div>
+            <div
+              className="flex flex-col group hover:bg-gray-700 p-2 rounded duration-300 transition"
+              onClick={() =>
+                setSettingState("vapor_theme", "bg-black", setTheme)
+              }
+            >
+              <p className="text-sm font-bold text-gray-500 group-hover:text-gray-200 mb-3 duration-300 transition">
+                Dark
+              </p>
+              <div className="h-12 bg-black rounded relative">
+                {theme === "bg-black" && <Check.Selected />}
+              </div>
+            </div>
+          </div>
+
+          <h4 className="text-gray-400 mx-3 font-extrabold">Backgrounds</h4>
+
+          <div className="flex flex-col md:grid grid-cols-2 gap-2 p-2 px-3">
+            <div
+              className="flex flex-col group hover:bg-gray-700 p-2 rounded duration-300 transition"
+              onClick={() =>
+                setSettingState(
+                  "vapor_background",
+                  "bg-topography",
+                  setBackground
+                )
+              }
+            >
+              <p className="text-sm font-bold text-gray-500 group-hover:text-gray-200 mb-3 duration-300 transition">
+                Topography
+              </p>
+              <div className={`h-20 bg-topography rounded relative ${theme}`}>
+                {background === "bg-topography" && <Check.Selected />}
+              </div>
+            </div>
+            <div
+              className="flex flex-col group hover:bg-gray-700 p-2 rounded duration-300 transition"
+              onClick={() =>
+                setSettingState("vapor_background", "bg-lines", setBackground)
+              }
+            >
+              <p className="text-sm font-bold text-gray-500 group-hover:text-gray-200 mb-3 duration-300 transition">
+                Lines in motion
+              </p>
+              <div className={`h-20 bg-lines rounded relative ${theme}`}>
+                {background === "bg-lines" && <Check.Selected />}
+              </div>
             </div>
           </div>
         </div>

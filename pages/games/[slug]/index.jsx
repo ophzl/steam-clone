@@ -23,7 +23,7 @@ const GamePage = ({
           layoutId={slug + "_bg"}
         >
           <img
-            className="object-cover h-full w-full md:h-auto  opacity-75 xl:h-screen"
+            className="object-cover h-full w-full md:h-auto xl:h-screen"
             src={backgroundUrl}
             alt={slug + "-background"}
           ></img>

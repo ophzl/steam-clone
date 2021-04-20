@@ -6,7 +6,7 @@ export default function Register() {
     <section className="bg-black flex flex-col md:flex-row h-screen items-center">
       <div className="bg-black hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
         <img
-          src="https://gpstatic.com/acache/47/27/1/fr/s19-bef9c17706f2412bd3b1422cc020dec8.jpg"
+          src="https://images6.alphacoders.com/483/thumb-1920-483285.jpg"
           //   src="https://source.unsplash.com/random"
           alt=""
           className="w-full h-full object-cover opacity-75"
@@ -25,7 +25,7 @@ export default function Register() {
           </Link>
         </div>
       </div>
-      <div className="bg-black w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center">
+      <div className="bg-black w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-2/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center">
         <motion.div className="w-full h-100" layoutId="auth_form">
           <div className="mx-auto w-full flex md:hidden">
             <Link href="/" aria-label="Vapor">
@@ -64,15 +64,27 @@ export default function Register() {
                 required
               />
             </div>
-            <div className="mt-4">
-              <label className="block text-gray-100">Password</label>
-              <input
-                type="password"
-                placeholder="p@ssw0rd!"
-                minLength={6}
-                className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
-                required
-              />
+            <div className="mt-4 inline-flex w-full">
+              <div className="w-1/2 pr-1">
+                <label className="block text-gray-100">Password</label>
+                <input
+                  type="password"
+                  placeholder="p@ssw0rd!"
+                  minLength={6}
+                  className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
+                  required
+                />
+              </div>
+              <div className="w-1/2 pl-1">
+                <label className="block text-gray-100">Password confirmation</label>
+                <input
+                  type="password"
+                  placeholder="p@ssw0rd!"
+                  minLength={6}
+                  className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
+                  required
+                />
+              </div>
             </div>
             <div className="text-right mt-2">
               <Link href="/auth/forgot">

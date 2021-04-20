@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  background-color: #000;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -114,4 +118,8 @@
 .menu-tertiary-exit-active {
   transform: translateX(110%);
   transition: all var(--speed) ease;
+}
+
+.text-transparent {
+  color: transparent;
 }

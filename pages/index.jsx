@@ -2,12 +2,15 @@ import { Layout } from "../components/Layout/Layout";
 import Link from "next/link";
 import { GameCard } from "../components/Game/GameCard";
 import dynamic from "next/dynamic";
+import { useAuth } from "../hooks/useAuth";
 
 const { MotionSlider } = dynamic(() => import("../components/MotionSlider"), {
   ssr: false,
 });
 
 export default function Home({ games }) {
+  const { user, library } = useAuth();
+
   return (
     <Layout>
       <h4 className="w-full text-2xl lg:text-5xl text-white font-light tracking-wider text-opacity-90 pt-24 px-16 lg:px-32 py-12 inline-flex items-center">
@@ -101,46 +104,10 @@ export default function Home({ games }) {
         <hr className="w-full border-yellow-500 opacity-70 ml-12"></hr>
       </h4>
       <section className="flex flex-col space-y-24 md:space-y-0 px-8 lg:px-24 md:grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-        <GameCard
-          vertical
-          slug="cyberpunk"
-          title="Cyberpunk 2077"
-          color="yellow"
-          bgUrl="https://media.melty.fr/article-4313652-so/media.jpg"
-          logoUrl="https://i.shgcdn.com/6c053630-2241-4b11-8b35-2cec9043d819/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
-        ></GameCard>
-        <GameCard
-          vertical
-          slug="half-life-alyx"
-          title="Half-Life Alyx"
-          color="gray"
-          bgUrl="https://gameranx.com/wp-content/uploads/2020/01/Half-Life-Alyx-4K-Wallpaper.jpg"
-          logoUrl="https://i.imgur.com/l6zTfqc.png"
-        ></GameCard>
-        <GameCard
-          vertical
-          slug="fifa-21"
-          title="Fifa 21"
-          color="gray"
-          bgUrl="https://wallpaperaccess.com/full/1108509.jpg"
-          logoUrl="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/fifa21-logo-buy-odhfowwo18r-xl-m.png"
-        ></GameCard>
-        <GameCard
-          vertical
-          slug="black-ops-cold-war"
-          title="Call of Duty: Black Ops Cold War"
-          color="red"
-          bgUrl="https://compass-ssl.xbox.com/assets/f5/61/f5611b5a-0405-4eb3-ad13-acabc6310b7f.jpg?n=242149_GLP-Page-Hero-1084_1920x1080.jpg"
-          logoUrl="https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/zeus/common/logos/zeus-logo-light.png"
-        ></GameCard>
-        <GameCard
-          vertical
-          slug="bioshock-collection"
-          title="BioShock Collection"
-          color="blue"
-          bgUrl="https://wallpapercave.com/wp/wp5251596.jpg"
-          logoUrl="https://img2.pngio.com/bioshock-logo-transparent-png-clipart-free-download-ywd-bioshock-the-collection-png-980_485.png"
-        ></GameCard>
+        {library.map((el, key) => (
+          <GameCard vertical key={key} {...el} />
+        ))}
+        
       </section>
     </Layout>
   );

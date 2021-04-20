@@ -20,7 +20,7 @@ export const GameCard = ({
         >
           <div className="w-full h-full">
             <img
-              className="object-cover w-full h-full  opacity-75 hover:scale-110 group-hover:opacity-50 transition duration-300 "
+              className="object-cover w-full h-full  opacity-90 hover:scale-110 group-hover:opacity-50 transition duration-300 "
               src={bgUrl}
               alt={title + "-background"}
               // style={{ height: size === "xl" && "25rem" }}

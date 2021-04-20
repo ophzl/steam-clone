@@ -1,10 +1,11 @@
 import "../styles/globals.css";
 import "../styles/backgrounds.css";
 
-
 import Head from "next/head";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import dynamic from "next/dynamic";
+import { ThemeProvider } from "../hooks/useTheme";
+import { AuthProvider } from "../hooks/useAuth";
 
 const Loader = dynamic(
   () => {
@@ -48,12 +49,16 @@ function App({ Component, pageProps }) {
         <link rel="apple-touch-icon" href="/apple-icon.png" /> */}
         <meta name="theme-color" content="#ffb700" />
       </Head>
-      <AnimateSharedLayout>
-        <AnimatePresence exitBeforeEnter>
-          <Component {...pageProps} />
-        </AnimatePresence>
-        <Loader></Loader>
-      </AnimateSharedLayout>
+      <AuthProvider>
+        <ThemeProvider>
+          <AnimateSharedLayout>
+            <AnimatePresence exitBeforeEnter>
+              <Component {...pageProps} />
+            </AnimatePresence>
+            <Loader></Loader>
+          </AnimateSharedLayout>
+        </ThemeProvider>
+      </AuthProvider>
     </>
   );
 }
