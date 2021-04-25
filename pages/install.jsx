@@ -4,7 +4,7 @@ function Install() {
   return (
     <Layout noPadding>
       <div>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-2screen/3 w-full flex items-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-screen w-full flex items-center">
           <div className="pt-32 pb-12 md:pt-40 md:pb-20">
             <div className="text-center pb-12 md:pb-16">
               <h1
@@ -28,7 +28,7 @@ function Install() {
                   <div>
                     <a
                       className="px-8 py-4 text-white bg-yellow-600 hover:bg-yellow-700 w-full mb-4 sm:w-auto sm:mb-0 font-bold tracking-wider uppercase transition duration-500"
-                      href="#0"
+                      href="#"
                     >
                       Install
                     </a>
@@ -36,7 +36,7 @@ function Install() {
                   <div>
                     <a
                       className="px-8 py-4 text-white bg-gray-700 hover:bg-gray-800 w-full sm:w-auto sm:ml-4 font-light tracking-wider uppercase transition duration-500"
-                      href="#0"
+                      href="#"
                     >
                       Learn more
                     </a>
@@ -48,7 +48,7 @@ function Install() {
                   data-aos-delay="150"
                 >
                   Vapor Launcher works on every platform{" "}
-                  <span className="text-xs">(except mobile... yet)</span>,
+                  <span className="text-xs">(except mobile... yet)</span>
                 </p>
               </div>
             </div>

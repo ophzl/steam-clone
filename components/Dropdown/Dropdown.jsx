@@ -8,6 +8,7 @@ import { useTheme } from "../../hooks/useTheme";
 import { Check } from "../Icons/Check";
 import { setSettingState } from "../../libs/localStorage";
 import { useAuth } from "../../hooks/useAuth";
+import { motion } from "framer-motion";
 
 export function Dropdown() {}
 
@@ -23,7 +24,7 @@ Dropdown.Details = ({ children }) => (
   </div>
 );
 
-Dropdown.Auth = () => {
+Dropdown.Auth = ({ isOpen }) => {
   const [activeMenu, setActiveMenu] = useState("main");
   const [menuHeight, setMenuHeight] = useState(null);
   const dropdownRef = useRef(null);
@@ -64,10 +65,16 @@ Dropdown.Auth = () => {
   }
 
   return (
-    <div
+    <motion.div
       className="absolute right-4 md:right-32 mb-12 top-20 md:top-24 w-72 bg-gray-800 py-4 overflow-hidden auth__dropdown"
       style={{ height: menuHeight }}
       ref={dropdownRef}
+      animate={isOpen ? "open" : "closed"}
+      variants={{
+        open: { opacity: 1 },
+        closed: { opacity: 0 },
+      }}
+      transition={{duration: 2}}
     >
       <CSSTransition
         in={activeMenu === "main"}
@@ -346,9 +353,22 @@ Dropdown.Auth = () => {
                 {background === "bg-lines" && <Check.Selected />}
               </div>
             </div>
+            <div
+              className="flex flex-col group hover:bg-gray-700 p-2 rounded duration-300 transition"
+              onClick={() =>
+                setSettingState("vapor_background", "", setBackground)
+              }
+            >
+              <p className="text-sm font-bold text-gray-500 group-hover:text-gray-200 mb-3 duration-300 transition">
+                No background
+              </p>
+              <div className={`h-20 rounded relative ${theme}`}>
+                {background === "" && <Check.Selected />}
+              </div>
+            </div>
           </div>
         </div>
       </CSSTransition>
-    </div>
+    </motion.div>
   );
 };

@@ -4,12 +4,12 @@ const ThemeContext = createContext();
 
 function ThemeProvider({ children }) {
   const [theme, setTheme] = useState("bg-black");
-  const [background, setBackground] = useState("bg-topography");
+  const [background, setBackground] = useState("");
 
   useEffect(
     () =>
       setTheme(getSetting("vapor_theme", "bg-black")) &&
-      setBackground(getSetting("vapor_background", "bg-topography")),
+      setBackground(getSetting("vapor_background", "")),
     []
   );
 

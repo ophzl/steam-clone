@@ -4,13 +4,14 @@ import { motion } from "framer-motion";
 import { MD5 } from "../../libs/md5";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { useAuth } from "../../hooks/useAuth";
+import { useInstall } from "../../hooks/useInstall";
 
 export const Navbar = () => {
   const [top, setTop] = useState(true);
 
-  const [installed, setInstalled] = useState(false);
 
   const { user, setUser } = useAuth();
+  const { installed } = useInstall()
 
   const [authOpen, setAuthOpen] = useState(false);
 
@@ -98,7 +99,7 @@ export const Navbar = () => {
                     whileTap={{ scale: 0.9 }}
                   ></motion.img>
 
-                  {authOpen && <Dropdown.Auth />}
+                  {authOpen && <Dropdown.Auth isOpen={authOpen} />}
                 </li>
               ) : (
                 <>
