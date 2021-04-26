@@ -9,6 +9,8 @@ import { Check } from "../Icons/Check";
 import { setSettingState } from "../../libs/localStorage";
 import { useAuth } from "../../hooks/useAuth";
 import { motion } from "framer-motion";
+import { Messages } from "../Icons/Messages";
+import { Settings } from "../Icons/Settings";
 
 export function Dropdown() {}
 
@@ -74,7 +76,7 @@ Dropdown.Auth = ({ isOpen }) => {
         open: { opacity: 1 },
         closed: { opacity: 0 },
       }}
-      transition={{duration: 2}}
+      transition={{ duration: 2 }}
     >
       <CSSTransition
         in={activeMenu === "main"}
@@ -142,39 +144,14 @@ Dropdown.Auth = ({ isOpen }) => {
           </Link>
           <Link href="/messages">
             <a className="w-full cursor-pointer">
-              <DropdownItem
-                leftIcon={
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
-                    <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
-                  </svg>
-                }
-              >
+              <DropdownItem leftIcon={<Messages className="w-5 h-5" />}>
                 Messages
               </DropdownItem>
             </a>
           </Link>
           <Dropdown.Divider />
           <DropdownItem
-            leftIcon={
-              <svg
-                className="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            }
+            leftIcon={<Settings className="h-5 w-5" />}
             rightIcon={<Chevron.Right />}
             goToMenu="settings"
           >
