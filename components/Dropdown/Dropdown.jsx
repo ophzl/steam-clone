@@ -11,6 +11,8 @@ import { useAuth } from "../../hooks/useAuth";
 import { motion } from "framer-motion";
 import { Messages } from "../Icons/Messages";
 import { Settings } from "../Icons/Settings";
+import { Experimental } from "../Icons/Experimental";
+import { useInstall } from "../../hooks/useInstall";
 
 export function Dropdown() {}
 
@@ -33,6 +35,7 @@ Dropdown.Auth = ({ isOpen }) => {
 
   const { background, setBackground, theme, setTheme } = useTheme();
   const { user, disconnect } = useAuth();
+  const { setInstalled } = useInstall();
 
   useEffect(() => {
     setMenuHeight(dropdownRef.current?.firstChild.offsetHeight + 30);
@@ -43,15 +46,33 @@ Dropdown.Auth = ({ isOpen }) => {
     setMenuHeight(height + 30);
   }
 
-  function DropdownItem({ goToMenu, leftIcon, rightIcon, height, children }) {
+  function DropdownItem({
+    goToMenu,
+    leftIcon,
+    rightIcon,
+    height,
+    children,
+    pointer,
+    onClick,
+  }) {
     return (
       <div
         className={`menu-item group ${
           height ? height : "h-12"
         } inline-flex w-full items-center p-2 px-5 hover:bg-gray-700 transition-colors duration-200 ${
           goToMenu ? " cursor-pointer" : ""
-        }`}
-        onClick={() => goToMenu && setActiveMenu(goToMenu)}
+        }
+        ${pointer ? "cursor-pointer" : ""}`}
+        onClick={() => {
+          if (goToMenu) {
+            setActiveMenu(goToMenu);
+            return;
+          }
+          if (onClick) {
+            onClick();
+            return;
+          }
+        }}
       >
         <span className="h-8 w-8 group-hover:bg-gray-600 rounded-full bg-gray-700 mr-2 flex items-center justify-center transition duration-300">
           {leftIcon}
@@ -158,20 +179,7 @@ Dropdown.Auth = ({ isOpen }) => {
             Settings
           </DropdownItem>
           <DropdownItem
-            leftIcon={
-              <svg
-                className="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7 2a1 1 0 00-.707 1.707L7 4.414v3.758a1 1 0 01-.293.707l-4 4C.817 14.769 2.156 18 4.828 18h10.343c2.673 0 4.012-3.231 2.122-5.121l-4-4A1 1 0 0113 8.172V4.414l.707-.707A1 1 0 0013 2H7zm2 6.172V4h2v4.172a3 3 0 00.879 2.12l1.027 1.028a4 4 0 00-2.171.102l-.47.156a4 4 0 01-2.53 0l-.563-.187a1.993 1.993 0 00-.114-.035l1.063-1.063A3 3 0 009 8.172z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            }
+            leftIcon={<Experimental className="w-5 h-5" />}
             rightIcon={<Chevron.Right></Chevron.Right>}
             goToMenu="experimental"
           >
@@ -250,6 +258,13 @@ Dropdown.Auth = ({ isOpen }) => {
           </DropdownItem>
           <Dropdown.Divider />
           <h3 className="text-center font-bold my-2">Experimental</h3>
+          <DropdownItem
+            pointer
+            leftIcon={<Experimental className="w-5 h-5" />}
+            onClick={() => setInstalled(true)}
+          >
+            <div>Change the Layout</div>
+          </DropdownItem>
         </div>
       </CSSTransition>
 

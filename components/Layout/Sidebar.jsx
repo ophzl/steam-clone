@@ -8,9 +8,12 @@ import { Friends } from "../Icons/Friends";
 import { Messages } from "../Icons/Messages";
 import { Settings } from "../Icons/Settings";
 import { Avatar } from "../Icons/Avatar";
+import { useInstall } from "../../hooks/useInstall";
+import { Experimental } from "../Icons/Experimental";
 
 function Sidebar() {
   const router = useRouter();
+  const { setInstalled } = useInstall();
   return (
     <aside className="h-screen w-16 sticky top-0 bg-gray-900 border-gray-800 border-r-2">
       <ul className="flex flex-col space-y-2 items-center justify-between w-full h-full py-2">
@@ -32,9 +35,14 @@ function Sidebar() {
         <div className="space-y-2">
           <Sidebar.Item
             href="/social/"
-
             icon={<Avatar.Me className="w-8 h-8" />}
           />
+          <li
+            className="w-12 h-12 rounded bg-gray-800 text-yellow-500 hover:bg-gray-700 hover:text-yellow-400 duration-200 transition cursor-pointer flex justify-center items-center"
+            onClick={() => setInstalled(false)}
+          >
+            <Experimental className="w-6 h-6" />
+          </li>
           <Sidebar.Item
             href="/settings"
             icon={<Settings className="w-6 h-6" />}

@@ -7,7 +7,7 @@ function InstallProvider({ children }) {
 
   return (
     <InstallContext.Provider
-      value={{ installed }}
+      value={{ installed, setInstalled }}
     >
       {children}
     </InstallContext.Provider>

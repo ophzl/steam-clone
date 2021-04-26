@@ -16,11 +16,11 @@ function Library() {
         </h4> */}
         {installed && (
           <h1
-            class="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-6 lg:mb-24 text-white flex flex-col pl-6 lg:pl-24"
+            className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-6 lg:mb-24 text-white flex flex-col pl-6 lg:pl-24"
             data-aos="zoom-y-out"
           >
             Welcome home
-            <span class="bg-clip-text text-transparent bg-gradient-to-tr from-yellow-400 via-yellow-600 to-red-500">
+            <span className="bg-clip-text text-transparent bg-gradient-to-tr from-yellow-400 via-yellow-600 to-red-500">
               {user.fullname}
             </span>
           </h1>

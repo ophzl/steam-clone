@@ -1,5 +1,7 @@
 import { Layout } from "../../components/Layout/Layout";
 
-export const SocialPage = () => {
+const SocialPage = () => {
   return <Layout></Layout>;
 };
+
+export default SocialPage;
