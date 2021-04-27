@@ -125,7 +125,7 @@ html {
 }
 
 :root {
-  --scrollbarBG: #11111180;
+  --scrollbarBG: #141414;
   --thumbBG: #ffb700;
 }
 body::-webkit-scrollbar {

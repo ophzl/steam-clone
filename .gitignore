@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+# electron
+/electron/node_modules
+
 # production
 /build
 

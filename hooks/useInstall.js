@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 const InstallContext = createContext();
 
 function InstallProvider({ children }) {
-    const [installed, setInstalled] = useState(true);
+    const [installed, setInstalled] = useState(false);
   
 
   return (

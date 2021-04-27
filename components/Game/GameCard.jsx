@@ -16,7 +16,7 @@ export const GameCard = ({
       {!vertical ? (
         <motion.div
           layoutId={slug + "_bg"}
-          className={`cursor-pointer group  w-full h-full relative bg-gradient-to-bl from-${color}-400 to-black hover:bg-gradient-to-b`}
+          className={`cursor-pointer select-none group  w-full h-full relative bg-gradient-to-bl from-${color}-400 to-black hover:bg-gradient-to-b`}
         >
           <div className="w-full h-full">
             <img
@@ -43,13 +43,13 @@ export const GameCard = ({
           </div>
         </motion.div>
       ) : (
-        <div className="h-72 mb-16">
+        <div className="h-72 select-none">
           <motion.div
             layoutId={slug + "_bg"}
             className={`cursor-pointer  group w-full h-full relative bg-gradient-to-bl from-${color}-400 to-black hover:bg-gradient-to-b`}
           >
             <img
-              className="object-cover w-full h-full  opacity-75 hover:scale-110 group-hover:opacity-50 transition duration-300 "
+              className="object-cover w-full h-full opacity-90 hover:scale-110 group-hover:opacity-50 transition duration-300 "
               src={bgUrl}
               alt={title + "-background"}
               // style={{ height: size === "xl" && "25rem" }}
@@ -64,10 +64,9 @@ export const GameCard = ({
             </div>
           </motion.div>
 
-          <div className="border-t border-gray-900  text-gray-300 bg-gray-800 py-5 px-2">
+          {/* <div className="border-t border-gray-900  text-gray-300 bg-gray-800 py-5 px-2">
             <h6 className="font-bold text-sm ml-3 truncate">{title}</h6>
-            {/* <h6 className="mt-1 text-xs">{description}</h6> */}
-          </div>
+          </div> */}
         </div>
       )}
     </Link>

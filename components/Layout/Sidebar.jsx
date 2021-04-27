@@ -15,7 +15,7 @@ function Sidebar() {
   const router = useRouter();
   const { setInstalled } = useInstall();
   return (
-    <aside className="h-screen w-16 sticky top-0 bg-gray-900 border-gray-800 border-r-2">
+    <aside className="h-screen w-16 sticky top-0 bg-gray-900 border-gray-800 border-opacity-30 border-2 z-50">
       <ul className="flex flex-col space-y-2 items-center justify-between w-full h-full py-2">
         <div className="flex-grow space-y-2">
           <Sidebar.Item href="/" icon={<Home className="w-6 h-6" />} />

@@ -19,7 +19,7 @@ const GamePage = ({
     <Layout>
       <section className="relative w-full h-96 md:h-auto md:min-h-96 overflow-hidden">
         <motion.div
-          className={`bg-gradient-to-b from-${color}-400 h-screen/2 xl:h-screen 2xl:h-screen/2 to-black w-full overflow-hidden`}
+          className={`bg-gradient-to-b from-${color}-400 h-screen/2 xl:h-screen 3xl:h-screen/2 to-black w-full overflow-hidden`}
           layoutId={slug + "_bg"}
         >
           <img
