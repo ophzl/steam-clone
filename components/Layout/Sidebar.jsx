@@ -10,10 +10,13 @@ import { Settings } from "../Icons/Settings";
 import { Avatar } from "../Icons/Avatar";
 import { useInstall } from "../../hooks/useInstall";
 import { Experimental } from "../Icons/Experimental";
+import { useAuth } from "../../hooks/useAuth";
+import { User } from "../Icons/User";
 
 function Sidebar() {
   const router = useRouter();
   const { setInstalled } = useInstall();
+  const { user } = useAuth();
   return (
     <aside className="h-screen w-16 sticky top-0 bg-gray-900 border-gray-800 border-opacity-30 border-2 z-50">
       <ul className="flex flex-col space-y-2 items-center justify-between w-full h-full py-2">
@@ -29,14 +32,31 @@ function Sidebar() {
           )}
           <hr className="border-b w-full border-gray-800 my-2"></hr>
           <Sidebar.Item href="/store" icon={<Store className="w-6 h-6" />} />
-          <Sidebar.Item href="/social" icon={<Friends className="w-6 h-6" />} />
-          <Sidebar.Item href="/chat" icon={<Messages className="w-6 h-6" />} />
+          {user && (
+            <>
+              <Sidebar.Item
+                href="/social"
+                icon={<Friends className="w-6 h-6" />}
+              />
+              <Sidebar.Item
+                href="/chat"
+                icon={<Messages className="w-6 h-6" />}
+              />
+            </>
+          )}
         </div>
         <div className="space-y-2">
-          <Sidebar.Item
-            href="/social/"
-            icon={<Avatar.Me className="w-8 h-8" />}
-          />
+          {user ? (
+            <Sidebar.Item
+              href="/social/"
+              icon={<Avatar.Me className="w-8 h-8" />}
+            />
+          ) : (
+            <Sidebar.Item
+              href="/auth/login"
+              icon={<User className="w-6 h-6" />}
+            />
+          )}
           <li
             className="w-12 h-12 rounded bg-gray-800 text-yellow-500 hover:bg-gray-700 hover:text-yellow-400 duration-200 transition cursor-pointer flex justify-center items-center"
             onClick={() => setInstalled(false)}

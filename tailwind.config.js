@@ -32,11 +32,13 @@ module.exports = {
       screens: {
         portrait: { raw: "(orientation: portrait)" },
       },
+      
     },
   },
   variants: {
     extend: {
       backgroundImage: ["hover", "focus"],
+      opacity: ['disabled'],
     },
   },
   plugins: [],

@@ -265,6 +265,10 @@ Dropdown.Auth = ({ isOpen }) => {
           >
             <div>Change the Layout</div>
           </DropdownItem>
+          <Dropdown.Divider />
+          <p className="m-3 text-xs">
+            {JSON.stringify(navigator.userAgent.toLowerCase())}
+          </p>
         </div>
       </CSSTransition>
 

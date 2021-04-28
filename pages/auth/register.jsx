@@ -18,8 +18,12 @@ export default function Register() {
           //   src="https://source.unsplash.com/random"
           alt=""
           className="w-full h-full object-cover opacity-75"
+          style={{ WebkitAppRegion: "drag" }}
         />
-        <div className="p-16 flex flex-col absolute top-0 left-0 ">
+        <div
+          className="p-16 flex flex-col absolute top-0 left-0 z-50"
+          style={{ WebkitAppRegion: "no-drag" }}
+        >
           <Link href="/" aria-label="Vapor">
             <motion.svg
               layoutId="app_logo"
