@@ -1,7 +1,13 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function Login() {
+  const { signin, signinWithGoogle } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <section className="bg-black flex flex-col md:flex-row h-screen items-center">
       <div className="bg-black hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
@@ -52,6 +58,7 @@ export default function Login() {
                 className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
                 autoFocus
                 required
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mt-4">
@@ -62,6 +69,7 @@ export default function Login() {
                 minLength={6}
                 className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
                 required
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="text-right mt-2">
@@ -72,6 +80,7 @@ export default function Login() {
               </Link>
             </div>
             <button
+              onClick={() => signin(email, password)}
               type="submit"
               className="w-full block bg-yellow-500 hover:bg-yellow-400 focus:bg-yellow-400 text-white font-semibold rounded-lg px-4 py-3 mt-6 transition duration-300"
             >
@@ -80,6 +89,7 @@ export default function Login() {
           </form>
           <hr className="my-6 border-gray-800 w-full" />
           <button
+            onClick={signinWithGoogle}
             type="button"
             className="w-full block bg-white bg-opacity-10 hover:bg-opacity-5 focus:bg-opacity-0 text-gray-100 font-semibold rounded-lg px-4 py-3 border border-black transition duration-300"
           >

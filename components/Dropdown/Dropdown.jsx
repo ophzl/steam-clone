@@ -34,7 +34,7 @@ Dropdown.Auth = ({ isOpen }) => {
   const dropdownRef = useRef(null);
 
   const { background, setBackground, theme, setTheme } = useTheme();
-  const { user, disconnect } = useAuth();
+  const { user, signout } = useAuth();
   const { setInstalled } = useInstall();
 
   useEffect(() => {
@@ -185,7 +185,7 @@ Dropdown.Auth = ({ isOpen }) => {
           >
             Experimental
           </DropdownItem>
-          <div className="w-full cursor-pointer" onClick={disconnect}>
+          <div className="w-full cursor-pointer" onClick={signout}>
             <DropdownItem
               leftIcon={
                 <svg

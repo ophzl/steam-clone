@@ -1,7 +1,15 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function Register() {
+  const { register, signinWithGoogle } = useAuth();
+  const [pseudo, setPseudo] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
   return (
     <section className="bg-black flex flex-col md:flex-row h-screen items-center">
       <div className="bg-black hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
@@ -52,6 +60,7 @@ export default function Register() {
                 className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
                 autoFocus
                 required
+                onChange={(e) => setPseudo(e.target.value)}
               />
             </div>
             <div className="mt-4">
@@ -62,6 +71,7 @@ export default function Register() {
                 className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
                 autoFocus
                 required
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mt-4 inline-flex w-full">
@@ -73,16 +83,20 @@ export default function Register() {
                   minLength={6}
                   className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
                   required
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="w-1/2 pl-1">
-                <label className="block text-gray-100">Password confirmation</label>
+                <label className="block text-gray-100">
+                  Password confirmation
+                </label>
                 <input
                   type="password"
                   placeholder="p@ssw0rd!"
                   minLength={6}
                   className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
                   required
+                  onChange={(e) => setPasswordConfirmation(e.target.value)}
                 />
               </div>
             </div>
@@ -94,7 +108,10 @@ export default function Register() {
               </Link>
             </div>
             <button
-              type="submit"
+              onClick={() =>
+                password === passwordConfirmation && register(email, password)
+              }
+              type="button"
               className="w-full block bg-yellow-500 hover:bg-yellow-400 focus:bg-yellow-400 text-white font-semibold rounded-lg px-4 py-3 mt-6 transition duration-300"
             >
               Create your account
@@ -102,6 +119,7 @@ export default function Register() {
           </form>
           <hr className="my-6 border-gray-800 w-full" />
           <button
+            onClick={signinWithGoogle}
             type="button"
             className="w-full block bg-white bg-opacity-10 hover:bg-opacity-5 focus:bg-opacity-0 text-gray-100 font-semibold rounded-lg px-4 py-3 border border-black transition duration-300"
           >

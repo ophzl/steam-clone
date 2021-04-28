@@ -1,5 +1,7 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 const AuthContext = createContext();
+import firebase, { createUser } from "../libs/firebase";
+import Router from "next/router";
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState({
@@ -8,6 +10,109 @@ function AuthProvider({ children }) {
     email: "florian.leroux3@laposte.net",
     friends: [{ uuid: "ophzl", fullname: "oph@zl.fr" }],
   });
+
+  const auth = useFirebaseAuth();
+
+  function useFirebaseAuth() {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    const handleUser = async (rawUser) => {
+      if (rawUser) {
+        const user = await formatUser(rawUser);
+        const { token, ...userWithoutToken } = user;
+
+        createUser(user.uid, userWithoutToken);
+        setUser(user);
+        // getUser(user.uid, userWithoutToken);
+
+        setLoading(false);
+        return user;
+      } else {
+        setUser(false);
+        setLoading(false);
+        return false;
+      }
+    };
+
+    const signin = async (email, password, redirect) => {
+      setLoading(true);
+      try {
+        const response = await firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password);
+        handleUser(response.user);
+      } catch (err) {
+        return err;
+      }
+      if (redirect) {
+        Router.push(redirect);
+      }
+    };
+
+    const register = async (email, password, redirect) => {
+      setLoading(true);
+      const response = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+      handleUser(response.user);
+      if (redirect) {
+        Router.push(redirect);
+      }
+    };
+
+    const signinWithGoogle = async (redirect) => {
+      setLoading(true);
+      const response = await firebase
+        .auth()
+        .signInWithPopup(new firebase.auth.GoogleAuthProvider());
+      handleUser(response.user);
+      if (redirect) {
+        Router.push(redirect);
+      }
+    };
+
+    const signout = async () => {
+      await firebase.auth().signOut();
+      return await handleUser(false);
+    };
+
+    useEffect(() => {
+      const unsubscribe = firebase.auth().onIdTokenChanged(handleUser);
+      return () => unsubscribe();
+    }, []);
+
+    useEffect(() => (user ? Router.push("/") : Router.push("/auth/login")), [
+      user,
+    ]);
+
+    return {
+      user,
+      loading,
+      signin,
+      signinWithGoogle,
+      signout,
+      register,
+    };
+  }
+
+  // const getUser = async (uid, user) => {
+  //   try {
+  //     let document = await firebase
+  //       .firestore()
+  //       .collection("users")
+  //       .doc(uid)
+  //       .get();
+  //     if (document && document.exists) {
+  //       setUser({ uid, ...document.data() });
+  //     } else {
+  //       await document.ref.set({ id: uid, ...user }, { merge: true });
+  //       setUser({ id: uid, ...user });
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   const [library, setLibrary] = useState([
     {
@@ -52,11 +157,8 @@ function AuthProvider({ children }) {
         "https://img2.pngio.com/bioshock-logo-transparent-png-clipart-free-download-ywd-bioshock-the-collection-png-980_485.png",
     },
   ]);
-
-  const disconnect = () => setUser(null) && setLibrary(null);
-
   return (
-    <AuthContext.Provider value={{ user, setUser, library, setLibrary, disconnect }}>
+    <AuthContext.Provider value={{ ...auth, library, setLibrary }}>
       {children}
     </AuthContext.Provider>
   );
@@ -65,3 +167,13 @@ function AuthProvider({ children }) {
 const useAuth = () => useContext(AuthContext);
 
 export { AuthProvider, useAuth };
+
+const formatUser = async (user) => {
+  return {
+    uid: user.uid,
+    email: user.email,
+    fullname: user.displayName,
+    provider: user.providerData[0].providerId,
+    photoUrl: user.photoURL,
+  };
+};
