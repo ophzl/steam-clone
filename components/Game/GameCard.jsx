@@ -5,7 +5,7 @@ export const GameCard = ({
   slug,
   title,
   description,
-  bgUrl,
+  backgroundUrl,
   logoUrl,
   color,
   size,
@@ -21,7 +21,7 @@ export const GameCard = ({
           <div className="w-full h-full">
             <img
               className="object-cover w-full h-full  opacity-90 hover:scale-110 group-hover:opacity-50 transition duration-300 "
-              src={bgUrl}
+              src={backgroundUrl}
               alt={title + "-background"}
               // style={{ height: size === "xl" && "25rem" }}
             ></img>
@@ -43,14 +43,14 @@ export const GameCard = ({
           </div>
         </motion.div>
       ) : (
-        <div className="h-72 select-none">
+        <div className="h-72 select-none ">
           <motion.div
             layoutId={slug + "_bg"}
-            className={`cursor-pointer  group w-full h-full relative bg-gradient-to-bl from-${color}-400 to-black hover:bg-gradient-to-b`}
+            className={`cursor-pointer  group w-full h-full relative bg-gradient-to-bl from-${color}-400 to-black rounded-lg hover:bg-gradient-to-b`}
           >
             <img
-              className="object-cover w-full h-full opacity-90 hover:scale-110 group-hover:opacity-50 transition duration-300 "
-              src={bgUrl}
+              className="object-cover w-full h-full opacity-90 hover:scale-110 group-hover:opacity-50 transition duration-300 rounded-lg"
+              src={backgroundUrl}
               alt={title + "-background"}
               // style={{ height: size === "xl" && "25rem" }}
             ></img>

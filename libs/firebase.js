@@ -23,5 +23,5 @@ export async function createUser(uid, data) {
   return await firebase.firestore()
     .collection("users")
     .doc(uid)
-    .set({ uid, ...data }, { merge: true });
+    .set({ uid, ...data, }, { merge: true });
 }

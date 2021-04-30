@@ -7,6 +7,8 @@ function InstallProvider({ children }) {
   useEffect(() => {
     var userAgent = navigator.userAgent.toLowerCase();
     setInstalled(userAgent.indexOf(" electron/") > -1);
+
+    if (process.env.NEXT_PUBLIC_ENV === "LOCAL") setInstalled(true);
   }, []);
 
   return (

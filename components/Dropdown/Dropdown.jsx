@@ -112,7 +112,10 @@ Dropdown.Auth = ({ isOpen }) => {
               <DropdownItem
                 leftIcon={
                   <img
-                    src={`https://www.gravatar.com/avatar/${MD5(user.email)}`}
+                    src={
+                      user.photoUrl ||
+                      `https://www.gravatar.com/avatar/${MD5(user.email)}`
+                    }
                   ></img>
                 }
                 height="h-full"

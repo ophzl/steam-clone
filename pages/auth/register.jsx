@@ -113,7 +113,7 @@ export default function Register() {
             </div>
             <button
               onClick={() =>
-                password === passwordConfirmation && register(email, password)
+                password === passwordConfirmation && register(email, password, pseudo)
               }
               type="button"
               className="w-full block bg-yellow-500 hover:bg-yellow-400 focus:bg-yellow-400 text-white font-semibold rounded-lg px-4 py-3 mt-6 transition duration-300"

@@ -61,7 +61,7 @@ export const Layout = ({ noPadding, children }) => {
       ) : (
         <div
           className={`${theme} ${background} min-h-screen h-full ${
-            noPadding ? "" : "pb-32 md:pb-64"
+            noPadding ? "" : "pb-32 md:pb-12"
           }`}
         >
           <Navbar />

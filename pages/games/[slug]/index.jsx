@@ -236,7 +236,7 @@ GamePage.getInitialProps = async (ctx) => {
   let props;
 
   switch (slug) {
-    case "cyberpunk":
+    case "cyberpunk-2077":
       props = {
         backgroundUrl: "https://media.melty.fr/article-4313652-so/media.jpg",
         logoUrl:

@@ -44,7 +44,7 @@ export default function Index() {
             slug="minecraft"
             title="Minecraft"
             color="red"
-            bgUrl="https://pbs.twimg.com/media/Eauzw3CXgAAJaVR.jpg:large"
+            backgroundUrl="https://pbs.twimg.com/media/Eauzw3CXgAAJaVR.jpg:large"
             logoUrl="https://pngimg.com/uploads/minecraft/minecraft_PNG16.png"
           ></GameCard>
           {/* </MotionSlider> */}
@@ -54,7 +54,7 @@ export default function Index() {
           slug="ori"
           title="Ori and the Blind Forest"
           color="blue"
-          bgUrl="https://www.fanbyte.com/wp-content/uploads/2020/07/ori.jpg"
+          backgroundUrl="https://www.fanbyte.com/wp-content/uploads/2020/07/ori.jpg"
           logoUrl="https://steamcdn-a.akamaihd.net/steam/apps/261570/logo.png?t=1424994057"
         ></GameCard>
 
@@ -62,16 +62,16 @@ export default function Index() {
           slug="adibou-2"
           title="Adibou et l'Ombre verte"
           color="purple"
-          bgUrl="https://adibou.mrtino.eu/img/adibou2.jpg"
+          backgroundUrl="https://adibou.mrtino.eu/img/adibou2.jpg"
           logoUrl="https://images.launchbox-app.com/ddceecee-4038-411f-99a0-be67b2d3f206.png"
         ></GameCard>
 
         <GameCard
           size="2xl"
-          slug="cyberpunk"
+          slug="cyberpunk-2077"
           title="Cyberpunk"
           color="yellow"
-          bgUrl="https://media.melty.fr/article-4313652-so/media.jpg"
+          backgroundUrl="https://media.melty.fr/article-4313652-so/media.jpg"
           logoUrl="https://i.shgcdn.com/6c053630-2241-4b11-8b35-2cec9043d819/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
         ></GameCard>
         <div className="col-start-3 lg:col-start-4">

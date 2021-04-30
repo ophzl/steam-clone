@@ -9,9 +9,8 @@ import { useInstall } from "../../hooks/useInstall";
 export const Navbar = () => {
   const [top, setTop] = useState(true);
 
-
   const { user, setUser } = useAuth();
-  const { installed } = useInstall()
+  const { installed } = useInstall();
 
   const [authOpen, setAuthOpen] = useState(false);
 
@@ -92,7 +91,10 @@ export const Navbar = () => {
                 <li>
                   <motion.img
                     onClick={() => setAuthOpen(!authOpen)}
-                    src={`https://www.gravatar.com/avatar/${MD5(user.email)}`}
+                    src={
+                      user.photoURl ||
+                      `https://www.gravatar.com/avatar/${MD5(user.email)}`
+                    }
                     className="w-12 h-12 rounded-full object-cover cursor-pointer"
                     initial={{ scale: 1 }}
                     whileHover={{ scale: 1.05 }}
