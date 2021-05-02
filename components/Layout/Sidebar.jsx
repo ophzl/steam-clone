@@ -66,7 +66,8 @@ function Sidebar() {
           {user && (
             <>
               <Sidebar.Item
-                href="/integration/spotify/"
+                href="https://open.spotify.com"
+                external
                 icon={<SpotifyIcon className="w-6 h-6" />}
                 label="Spotify"
                 accessibility={accessibility}
@@ -109,20 +110,40 @@ function Sidebar() {
 
 export default Sidebar;
 
-Sidebar.Item = ({ href, icon, label, accessibility }) => (
-  <Link href={href}>
-    <div className="flex flex-col justify-center group">
-      <li className="w-12 h-12 rounded bg-gray-800 text-yellow-500 group-hover:bg-gray-700 group-hover:text-yellow-400 duration-200 transition cursor-pointer flex justify-center items-center">
-        {icon}
-      </li>
-      {accessibility && label && (
-        <div
-          className="flex items-center justify-center w-full h-4 text-gray-300 bg-gray-800 group-hover:bg-gray-700 group-hover:text-yellow-400 rounded text-xs font-bold mt-1 duration-200 transition cursor-pointer"
-          style={{ fontSize: "0.6rem" }}
-        >
-          {label}
+Sidebar.Item = ({ href, icon, label, accessibility, external }) => (
+  <>
+    {external ? (
+      <a href={href} target="_blank">
+        <div className="flex flex-col justify-center group">
+          <li className="w-12 h-12 rounded bg-gray-800 text-yellow-500 group-hover:bg-gray-700 group-hover:text-yellow-400 duration-200 transition cursor-pointer flex justify-center items-center">
+            {icon}
+          </li>
+          {accessibility && label && (
+            <div
+              className="flex items-center justify-center w-full h-4 text-gray-300 bg-gray-800 group-hover:bg-gray-700 group-hover:text-yellow-400 rounded text-xs font-bold mt-1 duration-200 transition cursor-pointer"
+              style={{ fontSize: "0.6rem" }}
+            >
+              {label}
+            </div>
+          )}
         </div>
-      )}
-    </div>
-  </Link>
+      </a>
+    ) : (
+      <Link href={href}>
+        <div className="flex flex-col justify-center group">
+          <li className="w-12 h-12 rounded bg-gray-800 text-yellow-500 group-hover:bg-gray-700 group-hover:text-yellow-400 duration-200 transition cursor-pointer flex justify-center items-center">
+            {icon}
+          </li>
+          {accessibility && label && (
+            <div
+              className="flex items-center justify-center w-full h-4 text-gray-300 bg-gray-800 group-hover:bg-gray-700 group-hover:text-yellow-400 rounded text-xs font-bold mt-1 duration-200 transition cursor-pointer"
+              style={{ fontSize: "0.6rem" }}
+            >
+              {label}
+            </div>
+          )}
+        </div>
+      </Link>
+    )}
+  </>
 );

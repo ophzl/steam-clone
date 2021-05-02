@@ -1,4 +1,4 @@
-export const SubInfo = ({ img, tags, color }) => {
+export const SubInfo = ({ img, tags, color, description }) => {
   return (
     <div className="row-span-2 w-full bg-gray-800">
       <div className="w-full h-48">
@@ -8,10 +8,7 @@ export const SubInfo = ({ img, tags, color }) => {
         <div
           className={`text-sm text-justify border-b border-${color}-500 pb-4`}
         >
-          Cyberpunk 2077 is an open-world, action-adventure story set in Night
-          City, a megalopolis obsessed with power, glamour and body
-          modification. You play as V, a mercenary outlaw going after a
-          one-of-a-kind implant that is the key to immortality.
+          {description}
         </div>
         <div className="infos pb-4">
           <div className="flex flex-col w-full pt-4">

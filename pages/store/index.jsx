@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { GameCard } from "../../components/Game/GameCard";
 import { Layout } from "../../components/Layout/Layout";
@@ -35,7 +36,7 @@ function Index() {
             className="select-none text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-12  text-white inline-flex pl-6 lg:pl-24"
             data-aos="zoom-y-out"
           >
-            Shop your favorites
+            Shop your <span className="ml-4 hidden lg:flex">favorites</span>
             <span className="bg-clip-text text-transparent bg-gradient-to-tr from-yellow-400  to-orange-600 ml-4 pb-6">
               games
             </span>
@@ -45,9 +46,11 @@ function Index() {
           {games !== null ? (
             <>
               {games?.length > 0 ? (
-                <section className="flex flex-col space-y-6 md:space-y-0 sm:grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+                <section className="flex flex-col space-y-6 sm:space-y-0 sm:grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 transition duration-300">
                   {games.map((el, key) => (
-                    <GameCard vertical key={key} {...el} />
+                    <motion.div layoutId={el.slug + "_test"}>
+                      <GameCard vertical key={key} {...el} />
+                    </motion.div>
                   ))}
                 </section>
               ) : (
@@ -69,7 +72,6 @@ function Index() {
                   <Skeleton key={key} />
                 ))}
               </section>
-              {JSON.stringify(games, undefined, 1)}
             </div>
           )}
         </div>

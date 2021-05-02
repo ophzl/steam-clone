@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Layout } from "../../../components/Layout/Layout";
 
-const FriendPage = ({ uuid, img, fullname, lastUrl }) => {
+const FriendPage = ({ uid, img, fullname, lastUrl }) => {
   const router = useRouter();
   return (
     <Layout>
@@ -22,7 +22,7 @@ const FriendPage = ({ uuid, img, fullname, lastUrl }) => {
           <div className="inline-flex px-2 md:px-16 lg:px-24 xl:px-32">
             <div className="flex items-center">
               <motion.img
-                // layoutId={uuid + "-social"}
+                // layoutId={uid + "-social"}
                 className="rounded-full w-24 h-24 md:h-48 md:w-48  xl:w-72 xl:h-72 bg-black mr-6 md:mr-12"
                 alt="FL"
                 src={img}
@@ -56,12 +56,12 @@ const FriendPage = ({ uuid, img, fullname, lastUrl }) => {
                   {fullname}
                 </div>
                 <div className="text-normal xl:text-2xl text-gray-300 hover:text-gray-400 transition duration-150">
-                  @{uuid}
+                  @{uid}
                 </div>
                 <div className="text-xs md:text-sm xl:text-base text-gray-300 md:absolute pt-3 md:pt-0 bottom-0 right-0 flex flex-col md:items-end">
                   <span>
                     Last played game:
-                    <Link href="/games/cyberpunk">
+                    <Link href="/games/cyberpunk-2077">
                       <a className="text-yellow-400 font-bold ml-1 hover:text-yellow-600 transition duration-300 cursor-pointer">
                         Cyberpunk 2077
                       </a>
@@ -82,7 +82,7 @@ const FriendPage = ({ uuid, img, fullname, lastUrl }) => {
 
 FriendPage.getInitialProps = async (ctx) => {
   let body;
-  switch (ctx.query.uuid) {
+  switch (ctx.query.uid) {
     case "floriaan":
       body = {
         img: "https://avatars.githubusercontent.com/u/10078837?v=4",
@@ -116,7 +116,7 @@ FriendPage.getInitialProps = async (ctx) => {
       break;
   }
 
-  return { uuid: ctx.query.uuid, ...body };
+  return { uid: ctx.query.uid, ...body };
 };
 
 export default FriendPage;

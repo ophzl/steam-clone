@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+// import { useRouter } from "next/router";
 import { Social } from "../../../components/Game/Social";
 import { Specifications } from "../../../components/Game/Specifications";
 import { SubInfo } from "../../../components/Game/SubInfo";
 import { Layout } from "../../../components/Layout/Layout";
+import { useAuth } from "../../../hooks/useAuth";
+
+import firebase from "../../../libs/firebase";
 
 const GamePage = ({
   slug,
@@ -12,9 +16,26 @@ const GamePage = ({
   color,
   backgroundUrl,
   logoUrl,
-  owned,
   price,
+  description,
+  specifications,
 }) => {
+  const { library } = useAuth();
+  const gameIndex = library?.findIndex((el) => el.slug === slug);
+  const [owned, setOwned] = useState(false);
+  const { timePlayed } = library
+    ? library[gameIndex]
+      ? library[gameIndex]
+      : { timePlayed: 0 }
+    : { timePlayed: null };
+
+  useEffect(
+    () => setOwned(library?.findIndex((el) => el.slug === slug) !== -1),
+    [slug]
+  );
+
+  console.log("states", { owned, gameIndex, timePlayed });
+
   return (
     <Layout>
       <section className="relative w-full h-96 md:h-auto md:min-h-96 overflow-hidden">
@@ -83,7 +104,7 @@ const GamePage = ({
       <motion.section
         initial={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{duration: 1}}
+        transition={{ duration: 1 }}
         className={`mt-6 flex flex-col md:grid grid-cols-8 gap-4 md:h-24 mx-6`}
       >
         <div className="w-full col-span-3 bg-gray-800 bg-opacity-50 py-4 pl-8 flex flex-col justify-center">
@@ -94,7 +115,7 @@ const GamePage = ({
             <p className="text-gray-600 inline-flex items-center mt-1">
               Time played:
               <span className={`text-${color}-500 font-medium ml-2`}>
-                16.5 hours
+                {timePlayed} hours
               </span>
             </p>
           ) : (
@@ -188,54 +209,78 @@ const GamePage = ({
               "Exploration",
               "Nudity",
             ]}
+            description={description}
           />
           <div className="row-span-2">
             <Social game={title} />
           </div>
-          <Specifications
-            os="win"
-            title="Minimal specifications"
-            arch="Système d'exploitation et processeur 64 bits nécessaires"
-            osDetails="Windows 7 or 10"
-            processor="Intel Core i5-3570K or AMD FX-8310"
-            ram="8 GB de mémoire"
-            gpu="NVIDIA GeForce GTX 780 or AMD Radeon RX 470"
-            directX="Version 12"
-            disk_space="70 GB d'espace disque disponible"
-            more="In this game you
-            will encounter a variety of visual effects that may provide
-            seizures or loss of consciousness in a minority of people. If you
-            or someone you know experiences any of the above symptoms while
-            playing, stop and seek medical attention immediately."
-            color={color}
-          />
-          <Specifications
-            os="win"
-            title="Recommended specifications"
-            arch="Système d'exploitation et processeur 64 bits nécessaires"
-            osDetails="Windows 10"
-            processor="Intel Core i7-4790 or AMD Ryzen 3 3200G"
-            ram="12 GB de mémoire"
-            gpu="GTX 1060 6GB / GTX 1660 Super or Radeon RX 590"
-            directX="Version 12"
-            disk_space="70 GB d'espace disque disponible"
-            more="SSD recommended"
-            color={color}
-          />
+          {specifications.minimal && (
+            <Specifications
+              title="Minimal specifications"
+              // os="win"
+              // arch="Système d'exploitation et processeur 64 bits nécessaires"
+              // osDetails="Windows 7 or 10"
+              // processor="Intel Core i5-3570K or AMD FX-8310"
+              // ram="8 GB de mémoire"
+              // gpu="NVIDIA GeForce GTX 780 or AMD Radeon RX 470"
+              // directX="Version 12"
+              // diskSpace="70 GB d'espace disque disponible"
+              // more="In this game you
+              // will encounter a variety of visual effects that may provide
+              // seizures or loss of consciousness in a minority of people. If you
+              // or someone you know experiences any of the above symptoms while
+              // playing, stop and seek medical attention immediately."
+              color={color}
+              {...specifications.minimal}
+            />
+          )}
+          {specifications.recommended && (
+            <Specifications
+              title="Recommended specifications"
+              // os="win"
+              // arch="Système d'exploitation et processeur 64 bits nécessaires"
+              // osDetails="Windows 10"
+              // processor="Intel Core i7-4790 or AMD Ryzen 3 3200G"
+              // ram="12 GB de mémoire"
+              // gpu="GTX 1060 6GB / GTX 1660 Super or Radeon RX 590"
+              // directX="Version 12"
+              // diskSpace="70 GB d'espace disque disponible"
+              // more="SSD recommended"
+              color={color}
+              {...specifications.recommended}
+            />
+          )}
         </div>
       </section>
     </Layout>
   );
 };
 
-GamePage.getInitialProps = async (ctx) => {
-  // const res = await fetch("https://api.github.com/repos/vercel/next.js");
-  // const json = await res.json();
-
+export async function getServerSideProps(ctx) {
   const { slug } = ctx.query;
-  let props;
+  const gameRef = firebase.firestore().collection("games").doc(slug);
+  const game = await gameRef.get();
 
-  switch (slug) {
+  const minimalSpecs = await gameRef
+    .collection("specifications")
+    .doc("minimal")
+    .get();
+  const recommendedSpecs = await gameRef
+    .collection("specifications")
+    .doc("recommended")
+    .get();
+  const specifications = {
+    minimal: minimalSpecs.exists ? minimalSpecs.data() : null,
+    recommended: recommendedSpecs.exists ? recommendedSpecs.data() : null,
+  };
+
+  return { props: { slug, ...game.data(), specifications } };
+}
+
+export default GamePage;
+
+/**
+ * switch (slug) {
     case "cyberpunk-2077":
       props = {
         backgroundUrl: "https://media.melty.fr/article-4313652-so/media.jpg",
@@ -348,6 +393,4 @@ GamePage.getInitialProps = async (ctx) => {
   }
 
   return { slug, ...props };
-};
-
-export default GamePage;
+ */

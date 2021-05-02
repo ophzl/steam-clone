@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import "../styles/backgrounds.css";
 
 import Head from "next/head";
-import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { AnimateSharedLayout } from "framer-motion";
 import dynamic from "next/dynamic";
 import { ThemeProvider } from "../hooks/useTheme";
 import { AuthProvider } from "../hooks/useAuth";
@@ -18,6 +18,7 @@ const Loader = dynamic(
 function App({ Component, pageProps }) {
   return (
     <>
+      <Loader />
       <Head>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -55,7 +56,6 @@ function App({ Component, pageProps }) {
           <ThemeProvider>
             <AnimateSharedLayout>
               <Component {...pageProps} />
-              <Loader />
             </AnimateSharedLayout>
           </ThemeProvider>
         </AuthProvider>

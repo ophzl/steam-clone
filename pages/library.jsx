@@ -7,7 +7,7 @@ import { useInstall } from "../hooks/useInstall";
 function Library() {
   const { user, library } = useAuth();
   const { installed } = useInstall();
-  console.log("games", library);
+  // console.log("games", library);
   return (
     <Layout>
       <div className="pt-32 pb-6 lg:pt-24 xl:pb-12">
@@ -22,7 +22,7 @@ function Library() {
           >
             Welcome home
             <span className="bg-clip-text text-transparent bg-gradient-to-tr from-yellow-400  to-orange-600">
-              {user.fullname}
+              {user?.fullname}
             </span>
           </h1>
         )}
@@ -49,12 +49,11 @@ function Library() {
             </>
           ) : (
             <div className="text-gray-50 flex flex-col">
-              <section className="flex flex-col space-y-6 md:space-y-0 sm:grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+              <section className="flex flex-col space-y-6 md:space-y-0 sm:grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 transition duration-500">
                 {new Array(12).fill(null).map((_, key) => (
                   <Skeleton key={key} />
                 ))}
               </section>
-              {JSON.stringify(library, undefined, 1)}
             </div>
           )}
         </div>

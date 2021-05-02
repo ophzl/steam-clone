@@ -7,7 +7,7 @@ export const Specifications = ({
   ram,
   gpu,
   directX,
-  disk_space,
+  diskSpace,
   more,
   color,
 }) => {
@@ -48,9 +48,9 @@ export const Specifications = ({
             <span className="font-bold">DirectX</span> : {directX}
           </li>
         )}
-        {disk_space && (
+        {diskSpace && (
           <li>
-            <span className="font-bold">Disk Space</span> : {disk_space}
+            <span className="font-bold">Disk Space</span> : {diskSpace}
           </li>
         )}
         <hr className={`border-${color}-500 px-2 my-4`}></hr>
