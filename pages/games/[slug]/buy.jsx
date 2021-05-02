@@ -273,7 +273,7 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
   );
 };
 
-Buy.getServerSideProps = async (ctx) => {
+export async function getServerSideProps(ctx) {
   const { slug } = ctx.query;
   const gameRef = firebase.firestore().collection("games").doc(slug);
   const game = await gameRef.get();
