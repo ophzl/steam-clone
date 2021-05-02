@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { Layout } from "../../../components/Layout/Layout";
 
+import firebase from "../../../libs/firebase";
+
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 
@@ -195,12 +197,13 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
         </div>
         {/* </motion.div> */}
 
-        <div className="absolute h-screen w-screen flex justify-center items-center inset-0">
+        <div className="absolute h-full w-full flex justify-center items-center inset-0">
           <motion.div
             initial={{ scale: 0.8, opacity: 0.2 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="h-screen mt-48 md:mt-0 md:h-2screen/3 w-screen md:w-1/2 xl:w-1/3 bg-gray-800 flex flex-col p-6 text-gray-100"
+            className="w-screen md:w-1/2 xl:w-1/3 bg-gray-800 flex flex-col p-6 text-gray-100"
+            style={{ height: "90vh" }}
           >
             <div className="inline-flex items-center justify-between">
               <div className="inline-flex items-center">
@@ -262,7 +265,7 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
                 />
               </svg>
             </div>
-            <section className="mt-8">{stepsComponents[step]}</section>
+            <section className="mt-4">{stepsComponents[step]}</section>
           </motion.div>
         </div>
       </section>
@@ -270,126 +273,12 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
   );
 };
 
-Buy.getInitialProps = async (ctx) => {
-  // const res = await fetch("https://api.github.com/repos/vercel/next.js");
-  // const json = await res.json();
-
+Buy.getServerSideProps = async (ctx) => {
   const { slug } = ctx.query;
-  let props;
+  const gameRef = firebase.firestore().collection("games").doc(slug);
+  const game = await gameRef.get();
 
-  switch (slug) {
-    case "cyberpunk":
-      props = {
-        backgroundUrl: "https://media.melty.fr/article-4313652-so/media.jpg",
-        logoUrl:
-          "https://i.shgcdn.com/6c053630-2241-4b11-8b35-2cec9043d819/-/format/auto/-/preview/3000x3000/-/quality/lighter/",
-        color: "yellow",
-        title: "Cyberpunk 2077",
-        owned: true,
-        price: "69.99$",
-      };
-      break;
-    case "ori":
-      props = {
-        backgroundUrl:
-          "https://www.fanbyte.com/wp-content/uploads/2020/07/ori.jpg",
-        logoUrl:
-          "https://steamcdn-a.akamaihd.net/steam/apps/261570/logo.png?t=1424994057",
-        color: "blue",
-        title: "Ori and the Blind Forest",
-        owned: false,
-        price: "19.99$",
-      };
-      break;
-    case "adibou-2":
-      props = {
-        backgroundUrl: "https://adibou.mrtino.eu/img/adibou2.jpg",
-        logoUrl:
-          "https://images.launchbox-app.com/ddceecee-4038-411f-99a0-be67b2d3f206.png",
-        color: "purple",
-        title: "Adibou et l'Ombre Verte",
-        owned: false,
-        price: "5.99$",
-      };
-      break;
-    case "minecraft":
-      props = {
-        // backgroundUrl: "https://i.imgur.com/8QCax1W.png",
-        backgroundUrl: "https://pbs.twimg.com/media/Eauzw3CXgAAJaVR.jpg:large",
-        logoUrl: "https://pngimg.com/uploads/minecraft/minecraft_PNG16.png",
-        color: "red",
-        title: "Minecraft",
-        owned: false,
-        price: "25.99$",
-      };
-      break;
-
-    case "half-life-alyx":
-      props = {
-        backgroundUrl:
-          "https://gameranx.com/wp-content/uploads/2020/01/Half-Life-Alyx-4K-Wallpaper.jpg",
-        logoUrl: "https://i.imgur.com/l6zTfqc.png",
-        color: "gray",
-        title: "Half-Life: Alyx",
-        owned: true,
-
-        price: "49.99$",
-      };
-      break;
-    case "fifa-21":
-      props = {
-        backgroundUrl: "https://wallpaperaccess.com/full/1108509.jpg",
-        logoUrl:
-          "https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/fifa21-logo-buy-odhfowwo18r-xl-m.png",
-        color: "gray",
-        title: "Fifa 21",
-        owned: true,
-
-        price: "49.99$",
-      };
-      break;
-    case "black-ops-cold-war":
-      props = {
-        backgroundUrl:
-          "https://compass-ssl.xbox.com/assets/f5/61/f5611b5a-0405-4eb3-ad13-acabc6310b7f.jpg?n=242149_GLP-Page-Hero-1084_1920x1080.jpg",
-        logoUrl:
-          "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/zeus/common/logos/zeus-logo-light.png",
-        color: "red",
-        title: "Call of Duty: Black Ops Cold War",
-        owned: true,
-
-        price: "69.99$",
-      };
-      break;
-    case "bioshock-collection":
-      props = {
-        backgroundUrl: "https://wallpapercave.com/wp/wp5251596.jpg",
-        logoUrl:
-          "https://img2.pngio.com/bioshock-logo-transparent-png-clipart-free-download-ywd-bioshock-the-collection-png-980_485.png",
-        color: "blue",
-        title: "BioShock Collection",
-        owned: true,
-
-        price: "49.99$",
-      };
-      break;
-
-    default:
-      props = {
-        backgroundUrl:
-          "https://www.wallpapertip.com/wmimgs/181-1813965_cyberpunk-2077-yellow-plain-background-wallpaper.jpg",
-        logoUrl:
-          "https://i.shgcdn.com/6c053630-2241-4b11-8b35-2cec9043d819/-/format/auto/-/preview/3000x3000/-/quality/lighter/",
-        color: "gray",
-        title: "Cyberpunk 2077",
-
-        owned: true,
-        price: "69.99$",
-      };
-      break;
-  }
-
-  return { slug, ...props };
+  return { props: { slug, ...game.data(), specifications } };
 };
 
 export default Buy;

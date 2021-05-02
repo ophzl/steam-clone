@@ -12,10 +12,7 @@ export const Specifications = ({
   color,
 }) => {
   return (
-    <div
-      className="w-full flex text-sm flex-col bg-gray-800 p-5 "
-      data-os={os}
-    >
+    <div className="w-full flex text-sm flex-col bg-gray-800 p-5 " data-os={os}>
       <h3 className="font-light text-xl mb-4">{title}</h3>
       <ul className="space-y-1">
         {arch && (
@@ -53,8 +50,13 @@ export const Specifications = ({
             <span className="font-bold">Disk Space</span> : {diskSpace}
           </li>
         )}
-        <hr className={`border-${color}-500 px-2 my-4`}></hr>
-        {more && <li>{more}</li>}
+
+        {more && (
+          <>
+            <hr className={`border-${color}-500 px-2 my-4`}></hr>
+            <li>{more}</li>
+          </>
+        )}
       </ul>
     </div>
   );

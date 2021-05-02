@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-// import { useRouter } from "next/router";
+
 import { Social } from "../../../components/Game/Social";
 import { Specifications } from "../../../components/Game/Specifications";
 import { SubInfo } from "../../../components/Game/SubInfo";
@@ -19,6 +19,10 @@ const GamePage = ({
   price,
   description,
   specifications,
+  releaseDate,
+  developper,
+  publisher,
+  tags
 }) => {
   const { library } = useAuth();
   const gameIndex = library?.findIndex((el) => el.slug === slug);
@@ -33,8 +37,6 @@ const GamePage = ({
     () => setOwned(library?.findIndex((el) => el.slug === slug) !== -1),
     [slug]
   );
-
-  console.log("states", { owned, gameIndex, timePlayed });
 
   return (
     <Layout>
@@ -193,22 +195,15 @@ const GamePage = ({
         </div>
       </motion.section>
 
-      <section className="mt-6 text-gray-200">
+      <section className="mt-6 mb-3 text-gray-200">
         <div className="mx-6 flex flex-col md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <SubInfo
+            developper={developper}
+            publisher={publisher}
+            releaseDate={releaseDate}
             img={backgroundUrl}
             color={color}
-            tags={[
-              "Cyberpunk",
-              "Open World",
-              "RPG",
-              "Sci-fi",
-              "Futuristic",
-              "FPS",
-              "Atmospheric",
-              "Exploration",
-              "Nudity",
-            ]}
+            tags={tags}
             description={description}
           />
           <div className="row-span-2">

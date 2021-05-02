@@ -10,7 +10,8 @@ const Insert = () => {
         "https://i.shgcdn.com/6c053630-2241-4b11-8b35-2cec9043d819/-/format/auto/-/preview/3000x3000/-/quality/lighter/",
       color: "yellow",
       title: "Cyberpunk 2077",
-      //   owned: true,
+      description:
+        "Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality.",
       price: "69.99$",
     },
     {
@@ -36,12 +37,13 @@ const Insert = () => {
     },
     {
       slug: "minecraft",
-      // backgroundUrl: "https://i.imgur.com/8QCax1W.png",
-      backgroundUrl: "https://pbs.twimg.com/media/Eauzw3CXgAAJaVR.jpg:large",
+      backgroundUrl: "https://i.imgur.com/8QCax1W.png",
+      altBackgroundUrl: "https://pbs.twimg.com/media/Eauzw3CXgAAJaVR.jpg:large",
       logoUrl: "https://pngimg.com/uploads/minecraft/minecraft_PNG16.png",
       color: "red",
       title: "Minecraft",
-      //   owned: false,
+      description:
+        "Explore randomly generated worlds and build amazing things from the simplest of homes to the grandest of castles. Play in creative mode with unlimited resources or mine deep into the world in survival mode, crafting weapons and armor to fend off the dangerous mobs.",
       price: "25.99$",
     },
     {
@@ -51,8 +53,8 @@ const Insert = () => {
       logoUrl: "https://i.imgur.com/l6zTfqc.png",
       color: "gray",
       title: "Half-Life: Alyx",
-      //   owned: true,
-
+      description:
+        "Set between the events of Half-Life and Half-Life 2, Alyx Vance and her father Eli mount an early resistance to the Combine's brutal occupation of Earth.",
       price: "49.99$",
     },
     {
