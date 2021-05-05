@@ -278,7 +278,7 @@ export async function getServerSideProps(ctx) {
   const gameRef = firebase.firestore().collection("games").doc(slug);
   const game = await gameRef.get();
 
-  return { props: { slug, ...game.data(), specifications } };
+  return { props: { slug, ...game.data() } };
 };
 
 export default Buy;

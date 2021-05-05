@@ -91,14 +91,13 @@ export const Navbar = () => {
                 <li>
                   <motion.img
                     onClick={() => setAuthOpen(!authOpen)}
-                    src={
-                      user.photoURl ||
-                      `https://www.gravatar.com/avatar/${MD5(user.email)}`
-                    }
+                    src={user.photoURl}
                     className="w-12 h-12 rounded-full object-cover cursor-pointer"
                     initial={{ scale: 1 }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.9 }}
+                    referrerPolicy="no-referrer"
+                    
                   ></motion.img>
 
                   {authOpen && <Dropdown.Auth isOpen={authOpen} />}

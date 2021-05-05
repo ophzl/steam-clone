@@ -18,7 +18,7 @@ export const Layout = ({ noPadding, children }) => {
         <div className="flex flex-col">
           <div className="h-8 mb-1 w-full inline-flex items-center fixed bg-gray-900 z-40 pl-16 border-b-2 border-r-2 border-opacity-30 border-t-2 border-gray-800">
             <h3
-              className="ml-2 text-gray-700 uppercase font-xs font-black tracking-widest cursor-default select-none flex-grow"
+              className="ml-2 text-gray-700 uppercase font-xs font-black  cursor-default select-none flex-grow"
               style={{ WebkitAppRegion: "drag" }}
             >
               Vapor 💨
