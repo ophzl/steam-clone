@@ -6,16 +6,16 @@ import { Layout } from "../../components/Layout/Layout";
 const SettingsPage = () => {
   return (
     <Layout>
-      <div className="inline-flex">
+      <div className="inline-flex h-full">
         <Sidebar />
-        <div className="text-gray-200 mt-8 p-6 h-full">HE</div>
+        <div className="text-white p-6 mt-8">HE</div>
       </div>
     </Layout>
   );
 };
 
 const Sidebar = () => (
-  <div className="w-64 h-full bg-gray-800 bg-opacity-30">
+  <aside className="w-64 h-full bg-gray-800 bg-opacity-30">
     <div className="flex items-center justify-center pt-16">
       <img
         className="h-16"
@@ -51,7 +51,16 @@ const Sidebar = () => (
       </a>
     </nav>
 
-    <div className="absolute bottom-0 py-10"></div>
-  </div>
+    <div className="absolute bottom-0 py-10 w-64">
+      <a
+        className="flex items-center mt-5 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100 transition duration-300"
+        href="#"
+      >
+        <Settings className="w-5 h-5" />
+
+        <span className="mx-4 font-medium">Log out</span>
+      </a>
+    </div>
+  </aside>
 );
 export default SettingsPage;

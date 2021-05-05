@@ -5,6 +5,7 @@ import { MD5 } from "../../libs/md5";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { useAuth } from "../../hooks/useAuth";
 import { useInstall } from "../../hooks/useInstall";
+import { Avatar } from "../Icons/Avatar";
 
 export const Navbar = () => {
   const [top, setTop] = useState(true);
@@ -89,16 +90,16 @@ export const Navbar = () => {
               )}
               {user ? (
                 <li>
-                  <motion.img
+                  <motion.div
                     onClick={() => setAuthOpen(!authOpen)}
-                    src={user.photoURl}
-                    className="w-12 h-12 rounded-full object-cover cursor-pointer"
+                    
+                    className="w-12 h-12 cursor-pointer"
                     initial={{ scale: 1 }}
                     whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.9 }}
-                    referrerPolicy="no-referrer"
-                    
-                  ></motion.img>
+                    whileTap={{ scale: 0.9 }}                    
+                  >
+                    <Avatar.Me className="w-12 h-12"/>
+                  </motion.div>
 
                   {authOpen && <Dropdown.Auth isOpen={authOpen} />}
                 </li>
