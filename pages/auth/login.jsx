@@ -20,7 +20,10 @@ export default function Login() {
           className="w-full h-full object-cover opacity-75"
           style={{ WebkitAppRegion: "drag" }}
         />
-        <div className="p-16 flex flex-col absolute top-0 left-0 z-50" style={{ WebkitAppRegion: "no-drag" }}>
+        <div
+          className="p-16 flex flex-col absolute top-0 left-0 z-50"
+          style={{ WebkitAppRegion: "no-drag" }}
+        >
           <Link href="/" aria-label="Vapor">
             <motion.svg
               layoutId="app_logo"
@@ -92,7 +95,7 @@ export default function Login() {
           </form>
           <hr className="my-6 border-gray-800 w-full" />
           <button
-          disabled={installed}
+            disabled={installed}
             onClick={signinWithGoogle}
             type="button"
             className="w-full block disabled:opacity-50 bg-white bg-opacity-10 hover:bg-opacity-5 focus:bg-opacity-0 text-gray-100 font-semibold rounded-lg px-4 py-3 border border-black transition duration-300"
