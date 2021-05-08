@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 const AuthContext = createContext();
 import firebase, { createUser } from "../libs/firebase";
-import Router from "next/router";
+import { useRouter } from "next/router";
 
 function AuthProvider({ children }) {
   const auth = useFirebaseAuth();
@@ -26,6 +26,8 @@ function useFirebaseAuth() {
   const [user, setUser] = useState(null);
   const [library, setLibrary] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const Router = useRouter();
 
   const handleUser = async (rawUser) => {
     if (rawUser) {

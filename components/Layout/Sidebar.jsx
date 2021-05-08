@@ -21,24 +21,29 @@ function Sidebar() {
   const accessibility = true;
 
   return (
-    <aside className="h-screen w-16 sticky top-0 bg-gray-900 border-gray-800 border-opacity-30 border-2 z-50">
-      <ul className="flex flex-col space-y-2 items-center justify-between w-full h-full py-2">
+    <aside className="sticky top-0 z-50 w-16 h-screen bg-gray-900 border-2 border-gray-800 border-opacity-30">
+      <ul className="flex flex-col items-center justify-between w-full h-full py-2 space-y-2">
         <div className="flex-grow space-y-2">
           <Sidebar.Item
             href="/"
-            icon={<Home className="w-6 h-6" />}
+            icon={
+              <img
+                className="h-6"
+                src="https://emojis.wiki/emoji-pics/apple/dashing-away-apple.png"
+              />
+            }
             label="Vapor"
             accessibility={accessibility}
           />
           {router.pathname !== "/" && !router.pathname.includes("/library") && (
             <li
-              className="w-12 h-12 rounded bg-gray-800 text-yellow-500 hover:bg-gray-700 hover:text-yellow-400 duration-200 transition cursor-pointer flex justify-center items-center"
+              className="flex items-center justify-center w-12 h-12 text-yellow-500 transition duration-200 bg-gray-800 rounded cursor-pointer hover:bg-gray-700 hover:text-yellow-400"
               onClick={() => router.back()}
             >
               <Chevron.Left className="w-8 h-8" />
             </li>
           )}
-          <hr className="border-b w-full border-gray-800 my-2"></hr>
+          <hr className="w-full my-2 border-b border-gray-800"></hr>
           <Sidebar.Item
             href="/store"
             icon={<Store className="w-6 h-6" />}
@@ -72,7 +77,7 @@ function Sidebar() {
                 label="Spotify"
                 accessibility={accessibility}
               />
-              <hr className="border-b w-full border-gray-800 my-2"></hr>
+              <hr className="w-full my-2 border-b border-gray-800"></hr>
             </>
           )}
 
@@ -92,7 +97,7 @@ function Sidebar() {
             />
           )}
           <li
-            className="w-12 h-12 rounded bg-gray-800 text-yellow-500 hover:bg-gray-700 hover:text-yellow-400 duration-200 transition cursor-pointer flex justify-center items-center"
+            className="flex items-center justify-center w-12 h-12 text-yellow-500 transition duration-200 bg-gray-800 rounded cursor-pointer hover:bg-gray-700 hover:text-yellow-400"
             onClick={() => setInstalled(false)}
           >
             <Experimental className="w-6 h-6" />
@@ -115,12 +120,12 @@ Sidebar.Item = ({ href, icon, label, accessibility, external }) => (
     {external ? (
       <a href={href} target="_blank">
         <div className="flex flex-col justify-center group">
-          <li className="w-12 h-12 rounded bg-gray-800 text-yellow-500 group-hover:bg-gray-700 group-hover:text-yellow-400 duration-200 transition cursor-pointer flex justify-center items-center">
+          <li className="flex items-center justify-center w-12 h-12 text-yellow-500 transition duration-200 bg-gray-800 rounded cursor-pointer group-hover:bg-gray-700 group-hover:text-yellow-400">
             {icon}
           </li>
           {accessibility && label && (
             <div
-              className="flex items-center justify-center w-full h-4 text-gray-300 bg-gray-800 group-hover:bg-gray-700 group-hover:text-yellow-400 rounded text-xs font-bold mt-1 duration-200 transition cursor-pointer"
+              className="flex items-center justify-center w-full h-4 mt-1 text-xs font-bold text-gray-300 transition duration-200 bg-gray-800 rounded cursor-pointer group-hover:bg-gray-700 group-hover:text-yellow-400"
               style={{ fontSize: "0.6rem" }}
             >
               {label}
@@ -131,12 +136,12 @@ Sidebar.Item = ({ href, icon, label, accessibility, external }) => (
     ) : (
       <Link href={href}>
         <div className="flex flex-col justify-center group">
-          <li className="w-12 h-12 rounded bg-gray-800 text-yellow-500 group-hover:bg-gray-700 group-hover:text-yellow-400 duration-200 transition cursor-pointer flex justify-center items-center">
+          <li className="flex items-center justify-center w-12 h-12 text-yellow-500 transition duration-200 bg-gray-800 rounded cursor-pointer group-hover:bg-gray-700 group-hover:text-yellow-400">
             {icon}
           </li>
           {accessibility && label && (
             <div
-              className="flex items-center justify-center w-full h-4 text-gray-300 bg-gray-800 group-hover:bg-gray-700 group-hover:text-yellow-400 rounded text-xs font-bold mt-1 duration-200 transition cursor-pointer"
+              className="flex items-center justify-center w-full h-4 mt-1 text-xs font-bold text-gray-300 transition duration-200 bg-gray-800 rounded cursor-pointer group-hover:bg-gray-700 group-hover:text-yellow-400"
               style={{ fontSize: "0.6rem" }}
             >
               {label}

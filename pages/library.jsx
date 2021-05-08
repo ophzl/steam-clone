@@ -15,7 +15,7 @@ function Library() {
           Library
           <hr className="w-full border-yellow-500 opacity-70 ml-12"></hr>
         </h4> */}
-        {installed && (
+        {installed ? (
           <h1
             className="select-none text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-12 xl:mb-24 text-white flex flex-col pl-6 lg:pl-24"
             data-aos="zoom-y-out"
@@ -24,6 +24,13 @@ function Library() {
             <span className="bg-clip-text text-transparent bg-gradient-to-tr from-yellow-400  to-orange-600">
               {user?.fullname}
             </span>
+          </h1>
+        ): (
+          <h1
+            className="select-none text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-12 xl:mb-24 text-white flex flex-col pl-6 lg:pl-24"
+            data-aos="zoom-y-out"
+          >
+            Library
           </h1>
         )}
         <div className="px-6 lg:px-24 pt-6">

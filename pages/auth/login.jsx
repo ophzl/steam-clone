@@ -11,48 +11,42 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   return (
-    <section className="bg-black flex flex-col md:flex-row h-screen items-center">
-      <div className="bg-black hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
+    <section className="flex flex-col items-center h-screen bg-black md:flex-row">
+      <div className="hidden w-full h-screen bg-black lg:block md:w-1/2 xl:w-2/3">
         <img
           src="https://gpstatic.com/acache/47/27/1/fr/s19-bef9c17706f2412bd3b1422cc020dec8.jpg"
           //   src="https://source.unsplash.com/random"
           alt=""
-          className="w-full h-full object-cover opacity-75"
+          className="object-cover w-full h-full opacity-75"
           style={{ WebkitAppRegion: "drag" }}
         />
         <div
-          className="p-16 flex flex-col absolute top-0 left-0 z-50"
+          className="absolute top-0 left-0 z-50 flex flex-col p-16"
           style={{ WebkitAppRegion: "no-drag" }}
         >
           <Link href="/" aria-label="Vapor">
-            <motion.svg
+            <motion.img
               layoutId="app_logo"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-16 h-16 cursor-pointer text-white "
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M9.406 17.183c.431-1.025-.05-2.206-1.076-2.637l-1.762-.741c.331-.125.654-.182.982-.183 1.518 0 2.765 1.236 2.779 2.754.014 1.538-1.217 2.792-2.753 2.806-1.159.005-2.138-.684-2.571-1.665l1.763.741c1.027.432 2.207-.05 2.638-1.075zm9.594-17.183h-14c-2.761 0-5 2.239-5 5v6.043l5.585 2.349c.596-.39 1.283-.599 2.046-.583l3.017-4.221c.048-2.541 2.122-4.588 4.674-4.588 2.582 0 4.678 2.094 4.678 4.677 0 2.581-2.098 4.703-4.732 4.675l-4.115 3.067-.009.004c-.012 1.962-1.593 3.558-3.561 3.577-1.777.015-3.234-1.249-3.56-2.895l-4.023-1.692v3.587c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-3.678 11.857c-1.752 0-3.179-1.427-3.179-3.18 0-1.753 1.427-3.179 3.179-3.179 1.754 0 3.179 1.426 3.179 3.179s-1.425 3.18-3.179 3.18zm0-.779c1.325 0 2.4-1.077 2.4-2.401 0-1.323-1.075-2.401-2.4-2.401-1.324 0-2.401 1.078-2.401 2.401 0 1.324 1.077 2.401 2.401 2.401z" />
-            </motion.svg>
+              className="h-16 cursor-pointer"
+              src="https://emojis.wiki/emoji-pics/apple/dashing-away-apple.png"
+              alt="Vapor"
+            />
           </Link>
         </div>
       </div>
-      <div className="bg-black w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center">
+      <div className="flex items-center justify-center w-full h-screen px-6 bg-black md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 lg:px-16 xl:px-12">
         <motion.div className="w-full h-100" layoutId="auth_form">
-          <div className="mx-auto w-full flex md:hidden">
+          <div className="flex w-full mx-auto lg:hidden">
             <Link href="/" aria-label="Vapor">
-              <motion.svg
+              <motion.img
                 layoutId="app_logo_sm"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-16 h-16 cursor-pointer text-white "
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M9.406 17.183c.431-1.025-.05-2.206-1.076-2.637l-1.762-.741c.331-.125.654-.182.982-.183 1.518 0 2.765 1.236 2.779 2.754.014 1.538-1.217 2.792-2.753 2.806-1.159.005-2.138-.684-2.571-1.665l1.763.741c1.027.432 2.207-.05 2.638-1.075zm9.594-17.183h-14c-2.761 0-5 2.239-5 5v6.043l5.585 2.349c.596-.39 1.283-.599 2.046-.583l3.017-4.221c.048-2.541 2.122-4.588 4.674-4.588 2.582 0 4.678 2.094 4.678 4.677 0 2.581-2.098 4.703-4.732 4.675l-4.115 3.067-.009.004c-.012 1.962-1.593 3.558-3.561 3.577-1.777.015-3.234-1.249-3.56-2.895l-4.023-1.692v3.587c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-3.678 11.857c-1.752 0-3.179-1.427-3.179-3.18 0-1.753 1.427-3.179 3.179-3.179 1.754 0 3.179 1.426 3.179 3.179s-1.425 3.18-3.179 3.18zm0-.779c1.325 0 2.4-1.077 2.4-2.401 0-1.323-1.075-2.401-2.4-2.401-1.324 0-2.401 1.078-2.401 2.401 0 1.324 1.077 2.401 2.401 2.401z" />
-              </motion.svg>
+                className="h-16 cursor-pointer"
+                src="https://emojis.wiki/emoji-pics/apple/dashing-away-apple.png"
+                alt="Vapor"
+              />
             </Link>
           </div>
-          <h1 className="text-xl md:text-2xl text-white font-bold leading-tight mt-12">
+          <h1 className="mt-12 text-xl font-bold leading-tight text-white md:text-2xl">
             Log in to your account
           </h1>
           <form className="mt-6" action="#" method="POST">
@@ -61,7 +55,7 @@ export default function Login() {
               <input
                 type="email"
                 placeholder="johndoe@mail.com"
-                className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
+                className="w-full px-4 py-3 mt-2 font-bold text-gray-100 placeholder-gray-600 transition duration-300 bg-white border border-black rounded-lg bg-opacity-10 hover:bg-opacity-5 focus:bg-opacity-0 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none"
                 autoFocus
                 required
                 onChange={(e) => setEmail(e.target.value)}
@@ -73,12 +67,12 @@ export default function Login() {
                 type="password"
                 placeholder="p@ssw0rd!"
                 minLength={6}
-                className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
+                className="w-full px-4 py-3 mt-2 font-bold text-gray-100 placeholder-gray-600 transition duration-300 bg-white border border-black rounded-lg bg-opacity-10 hover:bg-opacity-5 focus:bg-opacity-0 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none"
                 required
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div className="text-right mt-2">
+            <div className="mt-2 text-right">
               <Link href="/auth/forgot">
                 <a className="text-sm font-semibold text-gray-200 hover:text-yellow-700 focus:text-yellow-700">
                   Forgot Password?
@@ -88,17 +82,17 @@ export default function Login() {
             <button
               onClick={() => signin(email, password)}
               type="submit"
-              className="w-full block bg-yellow-500 hover:bg-yellow-400 focus:bg-yellow-400 text-white font-semibold rounded-lg px-4 py-3 mt-6 transition duration-300"
+              className="block w-full px-4 py-3 mt-6 font-semibold text-white transition duration-300 bg-yellow-500 rounded-lg hover:bg-yellow-400 focus:bg-yellow-400"
             >
               Log In
             </button>
           </form>
-          <hr className="my-6 border-gray-800 w-full" />
+          <hr className="w-full my-6 border-gray-800" />
           <button
             disabled={installed}
-            onClick={signinWithGoogle}
+            onClick={() => signinWithGoogle("/")}
             type="button"
-            className="w-full block disabled:opacity-50 bg-white bg-opacity-10 hover:bg-opacity-5 focus:bg-opacity-0 text-gray-100 font-semibold rounded-lg px-4 py-3 border border-black transition duration-300"
+            className="block w-full px-4 py-3 font-semibold text-gray-100 transition duration-300 bg-white border border-black rounded-lg disabled:opacity-50 bg-opacity-10 hover:bg-opacity-5 focus:bg-opacity-0"
           >
             <div className="flex items-center justify-center">
               <svg
@@ -139,7 +133,7 @@ export default function Login() {
           <p className="mt-8 text-gray-300">
             Need an account?
             <Link href="/auth/register">
-              <a className="text-yellow-500 hover:text-yellow-700 font-semibold transition duration-300 ml-2">
+              <a className="ml-2 font-semibold text-yellow-500 transition duration-300 hover:text-yellow-700">
                 Create an account
               </a>
             </Link>

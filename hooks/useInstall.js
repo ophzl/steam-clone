@@ -8,7 +8,7 @@ function InstallProvider({ children }) {
     var userAgent = navigator.userAgent.toLowerCase();
     setInstalled(userAgent.includes("electron/"));
 
-    if (process.env.NEXT_PUBLIC_ENV === "LOCAL") setInstalled(true);
+    // if (process.env.NEXT_PUBLIC_ENV === "LOCAL") setInstalled(true);
   }, []);
 
   return (

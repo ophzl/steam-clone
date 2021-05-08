@@ -24,19 +24,18 @@ export default function Index() {
 
   return (
     <Layout noPadding>
-      <h4 className="w-full text-2xl lg:text-5xl text-white font-light tracking-wider text-opacity-90 pt-24 px-16 lg:px-32 py-12 inline-flex items-center">
+      <h3 className="flex flex-col px-16 py-12 pt-24 pl-6 text-3xl font-extrabold tracking-tight text-white select-none md:text-5xl lg:px-32 lg:pl-24">
         Featured
-        {/* <hr className="w-full border-yellow-500 opacity-70 ml-12"></hr> */}
-      </h4>
-      <section className=" flex flex-col px-8 lg:px-24 md:grid grid-cols-3 lg:grid-cols-4 gap-4 pb-24">
-        <div className="hidden lg:flex  flex-col justify-center text-center row-span-2 space-y-4 text-gray-200">
+      </h3>
+      <section className="flex flex-col grid-cols-3 gap-4 px-8 pb-24 lg:px-24 md:grid lg:grid-cols-4">
+        <div className="flex-col justify-center hidden row-span-2 space-y-4 text-center text-gray-200 lg:flex">
           <LinkCard href="/" title="Now" />
           <LinkCard href="/store/promotions" title="Promotions" />
           <LinkCard href="/store/independants" title="Independants" />
           <LinkCard href="/store/friends" title="Friends games" />
         </div>
 
-        <div className="flex  col-span-2 row-span-2">
+        <div className="flex col-span-2 row-span-2">
           {/* <MotionSlider allowSlideToLast padding={30}> */}
 
           <GameCard
@@ -44,7 +43,7 @@ export default function Index() {
             slug="minecraft"
             title="Minecraft"
             color="red"
-            backgroundUrl="https://pbs.twimg.com/media/Eauzw3CXgAAJaVR.jpg:large"
+            backgroundUrl="https://compass-ssl.xbox.com/assets/34/bb/34bb1efc-0142-4ef3-bb04-c15c8439937e.jpg?n=Minecraft_Sneaky-Slider-1084_Buzzy-Bees_1600x675.jpg"
             logoUrl="https://pngimg.com/uploads/minecraft/minecraft_PNG16.png"
           ></GameCard>
           {/* </MotionSlider> */}
@@ -65,15 +64,16 @@ export default function Index() {
           backgroundUrl="https://adibou.mrtino.eu/img/adibou2.jpg"
           logoUrl="https://images.launchbox-app.com/ddceecee-4038-411f-99a0-be67b2d3f206.png"
         ></GameCard>
-
-        <GameCard
-          size="2xl"
-          slug="cyberpunk-2077"
-          title="Cyberpunk"
-          color="yellow"
-          backgroundUrl="https://media.melty.fr/article-4313652-so/media.jpg"
-          logoUrl="https://i.shgcdn.com/6c053630-2241-4b11-8b35-2cec9043d819/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
-        ></GameCard>
+        <div className="flex col-span-2 row-span-2">
+          <GameCard
+            size="2xl"
+            slug="cyberpunk-2077"
+            title="Cyberpunk"
+            color="yellow"
+            backgroundUrl="https://media.melty.fr/article-4313652-so/media.jpg"
+            logoUrl="https://i.shgcdn.com/6c053630-2241-4b11-8b35-2cec9043d819/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+          ></GameCard>
+        </div>
         <div className="col-start-3 lg:col-start-4">
           <LinkCard
             href="/store"
@@ -91,7 +91,7 @@ const LinkCard = ({ icon, title, href }) => (
     <a
       className={`bg-black bg-opacity-70 py-5 w-full inline-flex ${
         icon ? "justify-center" : "pl-12"
-      } items-center text-gray-200 border-b font-bold uppercase tracking-widest leading-tight border-black  hover:bg-opacity-20 hover:border-yellow-400 transition duration-500`}
+      } items-center text-gray-200 font-extrabold tracking-tight hover:bg-opacity-60 hover:bg-yellow-500 transition duration-500`}
     >
       {icon}
       {title}
