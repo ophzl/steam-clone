@@ -1,23 +1,31 @@
 import { Layout } from "../components/Layout/Layout";
+import { useTheme } from "../hooks/useTheme";
 
 function Install() {
+  const { theme } = useTheme();
+
   return (
     <Layout noPadding>
       <div>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-screen w-full flex items-center">
-          <div className="pt-32 pb-12 md:pt-40 md:pb-20">
-            <div className="text-center pb-12 md:pb-16">
+        <div className="flex items-center w-full h-screen max-w-6xl px-4 mx-auto sm:px-6">
+          <div className="w-full pt-32 pb-12 md:pt-40 md:pb-20">
+            <div className="w-full pb-12 text-center md:pb-16">
               <h1
-                className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4 text-white"
-                data-aos="zoom-y-out"
+                className={`text-5xl md:text-6xl flex flex-col font-extrabold leading-tighter tracking-tighter mb-4 ${
+                  theme == "bg-black" ? "text-white" : "text-black"
+                }`}
               >
-                Make your gaming experience{" "}
-                <span className="bg-clip-text text-transparent bg-gradient-to-tr from-yellow-400 via-yellow-600 to-red-500">
+                Make your gaming experience
+                <span className="text-transparent bg-clip-text bg-gradient-to-tr from-yellow-400 via-yellow-600 to-red-500">
                   wonderful
                 </span>
               </h1>
               <div className="max-w-3xl mx-auto">
-                <p className="text-4xl my-12 tracking-tight leading-tight text-white font-bold">
+                <p
+                  className={`my-12 text-4xl font-bold leading-tight tracking-tight ${
+                    theme == "bg-black" ? "text-white" : "text-gray-700"
+                  }`}
+                >
                   Install and play.
                 </p>
                 <div
@@ -27,7 +35,7 @@ function Install() {
                 >
                   <div>
                     <a
-                      className="px-8 py-4 text-white bg-yellow-600 hover:bg-yellow-700 w-full mb-4 sm:w-auto sm:mb-0 font-bold tracking-wider uppercase transition duration-500"
+                      className="w-full px-8 py-4 mb-4 font-bold tracking-wider text-white uppercase transition duration-500 bg-yellow-600 hover:bg-yellow-700 sm:w-auto sm:mb-0"
                       href="#"
                     >
                       Install
@@ -35,7 +43,7 @@ function Install() {
                   </div>
                   <div>
                     <a
-                      className="px-8 py-4 text-white bg-gray-700 hover:bg-gray-800 w-full sm:w-auto sm:ml-4 font-light tracking-wider uppercase transition duration-500"
+                      className="w-full px-8 py-4 font-light tracking-wider text-white uppercase transition duration-500 bg-gray-700 hover:bg-gray-800 sm:w-auto sm:ml-4"
                       href="#"
                     >
                       Learn more
@@ -43,11 +51,13 @@ function Install() {
                   </div>
                 </div>
                 <p
-                  className="text-xl text-gray-200 my-8"
+                  className={`my-8 text-xl ${
+                    theme == "bg-black" ? "text-white" : "text-gray-600"
+                  }`}
                   data-aos="zoom-y-out"
                   data-aos-delay="150"
                 >
-                  Vapor Launcher works on every platform{" "}
+                  Vapor Launcher works on every platform
                   <span className="text-xs">(except mobile... yet)</span>
                 </p>
               </div>

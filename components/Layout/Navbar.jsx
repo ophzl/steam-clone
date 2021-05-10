@@ -8,11 +8,13 @@ import { useInstall } from "../../hooks/useInstall";
 import { Avatar } from "../Icons/Avatar";
 import { useRouter } from "next/router";
 import { Chevron } from "../Icons/Chevron";
+import { useTheme } from "../../hooks/useTheme";
 
 export const Navbar = () => {
   const [top, setTop] = useState(true);
 
-  const { user, setUser } = useAuth();
+  const { user } = useAuth();
+  const { theme } = useTheme();
   const { installed } = useInstall();
   const router = useRouter();
 
@@ -30,7 +32,7 @@ export const Navbar = () => {
   return (
     <header
       className={`fixed w-full z-30 bg-opacity-75 text-white transition duration-300 ease-in-out ${
-        !top && "bg-black blur shadow-lg"
+        !top && `${theme} blur shadow-lg`
       }`}
     >
       <div className="max-w-6xl px-8 py-3 mx-auto md:px-12">
@@ -60,10 +62,14 @@ export const Navbar = () => {
             </span>
             {router.pathname !== "/" && !router.pathname.includes("/library") && (
               <li
-                className="flex items-center justify-center w-12 h-12 text-gray-100 transition duration-300 ease-in-out cursor-pointer hover:bg-gray-900 hover:text-yellow-400"
+                className={`flex items-center justify-center w-12 h-12 ${
+                  theme === "bg-black" || top
+                    ? "text-gray-100 hover:bg-gray-900 hover:bg-opacity-50 hover:text-yellow-400"
+                    : "text-gray-800 hover:bg-gray-300 hover:bg-opacity-50 hover:text-gray-600"
+                } transition duration-300 ease-in-out rounded-lg cursor-pointer `}
                 onClick={() => router.back()}
               >
-                <Chevron.Left className="w-8 h-8" shadow/>
+                <Chevron.Left className="w-8 h-8" shadow />
               </li>
             )}
           </div>
@@ -75,7 +81,13 @@ export const Navbar = () => {
               {!installed && (
                 <li className="hidden md:block">
                   <Link href="/install">
-                    <a className="flex items-center px-5 py-3 font-medium text-gray-200 transition duration-300 ease-in-out hover:text-gray-100 hover:bg-green-600">
+                    <a
+                      className={`flex items-center px-5 py-3 font-medium ${
+                        theme === "bg-black" || top
+                          ? "text-gray-100"
+                          : "text-gray-800"
+                      } transition duration-300 ease-in-out rounded-lg hover:text-gray-100 hover:bg-green-600`}
+                    >
                       <svg
                         className="w-6 h-6 mr-1"
                         fill="currentColor"
@@ -111,14 +123,26 @@ export const Navbar = () => {
                 <>
                   <li>
                     <Link href="/auth/login">
-                      <a className="flex items-center px-5 py-3 font-medium text-gray-200 transition duration-300 ease-in-out bg-black hover:text-gray-800 hover:bg-yellow-500">
+                      <a
+                        className={`flex items-center px-5 py-3 font-medium ${
+                          theme === "bg-black" || top
+                            ? "text-gray-100"
+                            : "text-gray-800"
+                        } transition duration-300 ease-in-out bg-black rounded-lg hover:text-gray-800 hover:bg-yellow-500`}
+                      >
                         Sign in
                       </a>
                     </Link>
                   </li>
                   <li>
                     <Link href="/auth/register">
-                      <a className="inline-flex items-center px-5 py-3 text-gray-200 transition duration-300 bg-black hover:text-gray-800 hover:bg-yellow-500">
+                      <a
+                        className={`inline-flex items-center px-5 py-3 ${
+                          theme === "bg-black" || top
+                            ? "text-gray-100"
+                            : "text-gray-800"
+                        } transition duration-300 bg-black rounded-lg hover:text-gray-800 hover:bg-yellow-500`}
+                      >
                         <span>Sign up</span>
                         <svg
                           className="hidden w-3 h-3 ml-2 -mr-1 fill-current md:block"

@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { GameCard } from "../../components/Game/GameCard";
 import { Layout } from "../../components/Layout/Layout";
 import { Skeleton } from "../../components/Skeleton/Skeleton";
-import { useInstall } from "../../hooks/useInstall";
+import { useTheme } from "../../hooks/useTheme";
 import firebase from "../../libs/firebase";
 
 function Index() {
-  const { installed } = useInstall();
+  const { theme } = useTheme();
   const [games, setGames] = useState(null);
   useEffect(() => {
     const storeSnapshot = firebase
@@ -27,7 +27,11 @@ function Index() {
   return (
     <Layout>
       <div className="pt-32 pb-6 lg:pt-24 xl:pb-12">
-        <h1 className="inline-flex pl-6 mb-12 text-5xl font-extrabold tracking-tighter text-white select-none md:text-6xl leading-tighter lg:pl-24">
+        <h1
+          className={`inline-flex pl-6 mb-12 text-5xl font-extrabold tracking-tighter ${
+            theme === "bg-black" ? "text-white" : "text-gray-800"
+          } select-none md:text-6xl leading-tighter lg:pl-24`}
+        >
           Shop your <span className="hidden ml-4 lg:flex">favorites</span>
           <span className="pb-6 ml-4 text-transparent bg-clip-text bg-gradient-to-tr from-yellow-400 to-orange-600">
             games

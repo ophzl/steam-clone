@@ -23,7 +23,7 @@ Dropdown.Divider = ({ marginVertical }) => (
 );
 
 Dropdown.Details = ({ children }) => (
-  <div className="group-hover:bg-gray-700 flex flex-col px-5 pl-12">
+  <div className="flex flex-col px-5 pl-12 group-hover:bg-gray-700">
     {children}
   </div>
 );
@@ -59,7 +59,7 @@ Dropdown.Auth = ({ isOpen }) => {
       <div
         className={`menu-item group ${
           height ? height : "h-12"
-        } inline-flex w-full items-center p-2 px-5 hover:bg-gray-700 transition-colors duration-200 ${
+        } inline-flex w-full items-center p-2 px-6 hover:bg-gray-700 transition-colors duration-200${
           goToMenu ? " cursor-pointer" : ""
         }
         ${pointer ? "cursor-pointer" : ""}`}
@@ -74,12 +74,12 @@ Dropdown.Auth = ({ isOpen }) => {
           }
         }}
       >
-        <span className="h-8 w-8 group-hover:bg-gray-600 rounded-full bg-gray-700 mr-2 flex items-center justify-center transition duration-300">
+        <span className="flex items-center justify-center w-8 h-8 mr-2 transition duration-300 bg-gray-700 rounded-full group-hover:bg-gray-600">
           {leftIcon}
         </span>
         <span className="text-sm">{children}</span>
         {rightIcon && (
-          <span className="h-8 w-8 group-hover:bg-gray-600 rounded-full bg-gray-700 ml-auto flex items-center justify-center transition duration-300">
+          <span className="flex items-center justify-center w-8 h-8 ml-auto transition duration-300 bg-gray-700 rounded-full group-hover:bg-gray-600">
             {rightIcon}
           </span>
         )}
@@ -89,7 +89,7 @@ Dropdown.Auth = ({ isOpen }) => {
 
   return (
     <motion.div
-      className="absolute right-4 md:right-32 mb-12 top-20 md:top-24 w-72 bg-gray-800 py-4 overflow-hidden auth__dropdown"
+      className="absolute py-4 mb-12 overflow-hidden bg-gray-800 rounded-lg right-4 md:right-32 top-20 md:top-24 w-80 auth__dropdown"
       style={{ height: menuHeight }}
       ref={dropdownRef}
       animate={isOpen ? "open" : "closed"}
@@ -106,7 +106,7 @@ Dropdown.Auth = ({ isOpen }) => {
         unmountOnExit
         onEnter={calcHeight}
       >
-        <div className="w-full flex flex-col">
+        <div className="flex flex-col w-full">
           <Link href="/profile">
             <a className="w-full cursor-pointer">
               <DropdownItem
@@ -175,7 +175,7 @@ Dropdown.Auth = ({ isOpen }) => {
           </Link>
           <Dropdown.Divider />
           <DropdownItem
-            leftIcon={<Settings className="h-5 w-5" />}
+            leftIcon={<Settings className="w-5 h-5" />}
             rightIcon={<Chevron.Right />}
             goToMenu="settings"
           >
@@ -218,12 +218,12 @@ Dropdown.Auth = ({ isOpen }) => {
         unmountOnExit
         onEnter={calcHeight}
       >
-        <div className="w-full flex flex-col">
+        <div className="flex flex-col w-full">
           <DropdownItem goToMenu="main" leftIcon={<Chevron.Left />}>
             <h2>Back</h2>
           </DropdownItem>
           <Dropdown.Divider />
-          <h3 className="text-center font-bold my-2">Settings</h3>
+          <h3 className="my-2 font-bold text-center">Settings</h3>
 
           <DropdownItem
             goToMenu="settings_appearance"
@@ -255,12 +255,12 @@ Dropdown.Auth = ({ isOpen }) => {
         unmountOnExit
         onEnter={calcHeight}
       >
-        <div className="w-full flex flex-col">
+        <div className="flex flex-col w-full">
           <DropdownItem goToMenu="main" leftIcon={<Chevron.Left />}>
             <h2>Back</h2>
           </DropdownItem>
           <Dropdown.Divider />
-          <h3 className="text-center font-bold my-2">Experimental</h3>
+          <h3 className="my-2 font-bold text-center">Experimental</h3>
           <DropdownItem
             pointer
             leftIcon={<Experimental className="w-5 h-5" />}
@@ -282,48 +282,48 @@ Dropdown.Auth = ({ isOpen }) => {
         unmountOnExit
         onEnter={calcHeight}
       >
-        <div className="w-full flex flex-col">
+        <div className="flex flex-col w-full">
           <DropdownItem goToMenu="settings" leftIcon={<Chevron.Left />}>
             <h2>Back</h2>
           </DropdownItem>
           <Dropdown.Divider />
-          <h3 className="text-center font-bold my-2">Appearance</h3>
+          <h3 className="my-2 font-bold text-center">Appearance</h3>
 
-          <h4 className="text-gray-400 mx-3 font-extrabold">Color Theme</h4>
-          <div className="flex flex-col md:grid grid-cols-2 gap-2 p-2 px-3">
+          <h4 className="mx-3 font-extrabold text-gray-400">Color Theme</h4>
+          <div className="flex flex-col grid-cols-2 gap-2 p-2 px-3 md:grid">
             <div
-              className="flex flex-col group hover:bg-gray-700 p-2 rounded duration-300 transition"
+              className="flex flex-col p-2 transition duration-300 rounded group hover:bg-gray-700"
               onClick={() =>
                 setSettingState("vapor_theme", "bg-white", setTheme)
               }
             >
-              <p className="text-sm font-bold text-gray-500 group-hover:text-gray-200 mb-3 duration-300 transition">
+              <p className="mb-3 text-sm font-bold text-gray-500 transition duration-300 group-hover:text-gray-200">
                 Light
               </p>
-              <div className="h-12 bg-white rounded relative">
+              <div className="relative h-12 bg-white rounded">
                 {theme === "bg-white" && <Check.Selected />}
               </div>
             </div>
             <div
-              className="flex flex-col group hover:bg-gray-700 p-2 rounded duration-300 transition"
+              className="flex flex-col p-2 transition duration-300 rounded group hover:bg-gray-700"
               onClick={() =>
                 setSettingState("vapor_theme", "bg-black", setTheme)
               }
             >
-              <p className="text-sm font-bold text-gray-500 group-hover:text-gray-200 mb-3 duration-300 transition">
+              <p className="mb-3 text-sm font-bold text-gray-500 transition duration-300 group-hover:text-gray-200">
                 Dark
               </p>
-              <div className="h-12 bg-black rounded relative">
+              <div className="relative h-12 bg-black rounded">
                 {theme === "bg-black" && <Check.Selected />}
               </div>
             </div>
           </div>
 
-          <h4 className="text-gray-400 mx-3 font-extrabold">Backgrounds</h4>
+          <h4 className="mx-3 font-extrabold text-gray-400">Backgrounds</h4>
 
-          <div className="flex flex-col md:grid grid-cols-2 gap-2 p-2 px-3">
+          <div className="flex flex-col grid-cols-2 gap-2 p-2 px-3 md:grid">
             <div
-              className="flex flex-col group hover:bg-gray-700 p-2 rounded duration-300 transition"
+              className="flex flex-col p-2 transition duration-300 rounded group hover:bg-gray-700"
               onClick={() =>
                 setSettingState(
                   "vapor_background",
@@ -332,7 +332,7 @@ Dropdown.Auth = ({ isOpen }) => {
                 )
               }
             >
-              <p className="text-sm font-bold text-gray-500 group-hover:text-gray-200 mb-3 duration-300 transition">
+              <p className="mb-3 text-sm font-bold text-gray-500 transition duration-300 group-hover:text-gray-200">
                 Topography
               </p>
               <div className={`h-20 bg-topography rounded relative ${theme}`}>
@@ -340,12 +340,12 @@ Dropdown.Auth = ({ isOpen }) => {
               </div>
             </div>
             <div
-              className="flex flex-col group hover:bg-gray-700 p-2 rounded duration-300 transition"
+              className="flex flex-col p-2 transition duration-300 rounded group hover:bg-gray-700"
               onClick={() =>
                 setSettingState("vapor_background", "bg-lines", setBackground)
               }
             >
-              <p className="text-sm font-bold text-gray-500 group-hover:text-gray-200 mb-3 duration-300 transition">
+              <p className="mb-3 text-sm font-bold text-gray-500 transition duration-300 group-hover:text-gray-200">
                 Lines in motion
               </p>
               <div className={`h-20 bg-lines rounded relative ${theme}`}>
@@ -353,12 +353,12 @@ Dropdown.Auth = ({ isOpen }) => {
               </div>
             </div>
             <div
-              className="flex flex-col group hover:bg-gray-700 p-2 rounded duration-300 transition"
+              className="flex flex-col p-2 transition duration-300 rounded group hover:bg-gray-700"
               onClick={() =>
                 setSettingState("vapor_background", "", setBackground)
               }
             >
-              <p className="text-sm font-bold text-gray-500 group-hover:text-gray-200 mb-3 duration-300 transition">
+              <p className="mb-3 text-sm font-bold text-gray-500 transition duration-300 group-hover:text-gray-200">
                 No background
               </p>
               <div className={`h-20 rounded relative ${theme}`}>

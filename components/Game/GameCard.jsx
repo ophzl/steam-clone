@@ -16,11 +16,11 @@ export const GameCard = ({
       {!vertical ? (
         <motion.div
           layoutId={slug + "_bg"}
-          className={`cursor-pointer select-none group  w-full h-full relative bg-gradient-to-bl from-${color}-400 to-black hover:bg-gradient-to-b`}
+          className={`cursor-pointer select-none group rounded-lg w-full h-full relative bg-gradient-to-bl from-${color}-400 to-black hover:bg-gradient-to-b`}
         >
           <div className="w-full h-full">
             <img
-              className="object-cover w-full h-full transition duration-300 opacity-90 hover:scale-110 group-hover:opacity-50 "
+              className="object-cover w-full h-full transition duration-300 rounded-lg opacity-90 hover:scale-110 group-hover:opacity-50 "
               src={backgroundUrl}
               alt={title + "-background"}
               // style={{ height: size === "xl" && "25rem" }}
