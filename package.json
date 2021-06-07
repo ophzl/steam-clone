@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
+    "docker": "next start -p 3000",
     "start": "next start -p $PORT",
     "electron": "concurrently \"npm run dev\" \"cd ./electron && npm run start\""
   },

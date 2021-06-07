@@ -7,8 +7,12 @@ import firebase from "../../../libs/firebase";
 
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
+import { useAuth } from "../../../hooks/useAuth";
+import { useRouter } from "next/router";
 
 const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
+  const { user } = useAuth();
+  const router = useRouter();
   const [card, setCard] = useState({
     cvc: "",
     expiry: "",
@@ -26,22 +30,36 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
     setCard({ ...card, focus: e.target.name });
   };
 
+  const addToLibrary = async () => {
+    const game = await firebase.firestore().collection("games").doc(slug).get();
+
+    const gameInLibrary = await firebase
+      .firestore()
+      .collection("users")
+      .doc(user.uid)
+      .collection("library")
+      .doc(slug)
+      .set({ ...game.data(), slug, timePlayed: 0 });
+
+    router.push(`/games/${slug}`);
+  };
+
   const [step, setStep] = useState(0);
   const stepsComponents = [
     <div className="h-full">
       <div className="flex flex-col flex-grow">
-        <div className="flex flex-col bg-gray-900 p-4 mt-2 mb-4">
+        <div className="flex flex-col p-4 mt-2 mb-4 bg-gray-900">
           <div className="inline-flex items-center">
             <div className="w-32 h-32">
               <motion.img
-                className="w-full h-full object-contain"
+                className="object-contain w-full h-full"
                 src={logoUrl}
                 alt={title + "-logo"}
                 layoutId={slug + "_logo"}
               ></motion.img>
             </div>
 
-            <div className="flex flex-col ml-4 justify-center">
+            <div className="flex flex-col justify-center ml-4">
               <h5 className="text-2xl font-semibold">{title}</h5>
               <div className="inline-flex space-x-2">
                 <span className="bg-gray-800 px-2 py-0.5 text-xs">PC</span>
@@ -65,25 +83,25 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
         <div className="summary">
           <div className="flex flex-col">
             <div
-              className="inline-flex justify-between items-center"
+              className="inline-flex items-center justify-between"
               id="subtotal"
             >
               <div className="text-sm">Subtotal</div>
-              <div className="text-normal font-medium">{price}</div>
+              <div className="font-medium text-normal">{price}</div>
             </div>
             <div
-              className="inline-flex justify-between items-center"
+              className="inline-flex items-center justify-between"
               id="total-discount"
             >
               <div className="text-sm">Discount</div>
               <div className="text-normal">0.00$</div>
             </div>
             <div
-              className="inline-flex justify-between items-center"
+              className="inline-flex items-center justify-between"
               id="total-price"
             >
               <div className="text-sm">Total</div>
-              <div className="text-normal font-bold text-yellow-400">
+              <div className="font-bold text-yellow-400 text-normal">
                 {price}
               </div>
             </div>
@@ -112,7 +130,7 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
         <div className="password-prompt">
           <input
             type="password"
-            className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
+            className="w-full px-4 py-2 mt-2 font-bold text-gray-100 placeholder-gray-600 transition duration-300 bg-white border border-black rounded-lg bg-opacity-10 hover:bg-opacity-5 focus:bg-opacity-0 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none"
             name="passwordPromptInput"
             placeholder="Enter your password"
           />
@@ -123,7 +141,7 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         transition={{ duration: 0.3 }}
-        className="bg-green-600 w-full inline-flex flex-shrink justify-center items-center py-4 text-xl uppercase tracking-widest"
+        className="inline-flex items-center justify-center flex-shrink w-full py-4 text-xl tracking-widest uppercase bg-green-600"
         onClick={() => setStep(1)}
       >
         Next
@@ -139,7 +157,7 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
           number={card.number}
         />
       </div>
-      <div className="flex flex-col mt-5 pt-5 border-t border-gray-700">
+      <div className="flex flex-col pt-5 mt-5 border-t border-gray-700">
         <div className="inline-flex">
           <input
             type="text"
@@ -147,7 +165,7 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
             placeholder="Card Number"
             onChange={handleInputChange}
             onFocus={handleInputFocus}
-            className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
+            className="w-full px-4 py-3 mt-2 font-bold text-gray-100 placeholder-gray-600 transition duration-300 bg-white border border-black rounded-lg bg-opacity-10 hover:bg-opacity-5 focus:bg-opacity-0 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none"
           />
         </div>
         <div className="inline-flex mt-3">
@@ -157,7 +175,7 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
             placeholder="Name"
             onChange={handleInputChange}
             onFocus={handleInputFocus}
-            className="w-3/5 px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
+            className="w-3/5 px-4 py-3 mt-2 font-bold text-gray-100 placeholder-gray-600 transition duration-300 bg-white border border-black rounded-lg bg-opacity-10 hover:bg-opacity-5 focus:bg-opacity-0 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none"
           />
           <input
             type="text"
@@ -165,7 +183,7 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
             placeholder="CVC"
             onChange={handleInputChange}
             onFocus={handleInputFocus}
-            className="w-1/5 mx-2 px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
+            className="w-1/5 px-4 py-3 mx-2 mt-2 font-bold text-gray-100 placeholder-gray-600 transition duration-300 bg-white border border-black rounded-lg bg-opacity-10 hover:bg-opacity-5 focus:bg-opacity-0 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none"
           />
 
           <input
@@ -173,7 +191,7 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
             placeholder="Expiry"
             onChange={handleInputChange}
             onFocus={handleInputFocus}
-            className="w-1/5 ml-1 px-4 py-3 rounded-lg bg-white bg-opacity-10 placeholder-gray-600 hover:bg-opacity-5 focus:bg-opacity-0 mt-2 border border-black font-bold text-gray-100 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none transition duration-300"
+            className="w-1/5 px-4 py-3 mt-2 ml-1 font-bold text-gray-100 placeholder-gray-600 transition duration-300 bg-white border border-black rounded-lg bg-opacity-10 hover:bg-opacity-5 focus:bg-opacity-0 focus:text-yellow-500 focus:border-yellow-500 focus:bg-black focus:outline-none"
           />
         </div>
       </div>
@@ -185,24 +203,24 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
       <section className="relative w-full h-full">
         {/* <motion.div */}
         <div
-          className="h-screen w-full opacity-50 bg-black"
+          className="w-full h-screen bg-black opacity-50"
           layoutId={slug + "_bg"}
           animate={{ scale: 1 }}
         >
           <img
-            className="object-cover h-full w-full opacity-75"
+            className="object-cover w-full h-full opacity-75"
             src={backgroundUrl}
             alt={slug + "-background"}
           ></img>
         </div>
         {/* </motion.div> */}
 
-        <div className="absolute h-full w-full flex justify-center items-center inset-0">
+        <div className="absolute inset-0 flex items-center justify-center w-full h-full">
           <motion.div
             initial={{ scale: 0.8, opacity: 0.2 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="w-screen md:w-1/2 xl:w-1/3 bg-gray-800 flex flex-col p-6 text-gray-100"
+            className="flex flex-col w-screen p-6 mt-6 text-gray-100 bg-gray-800 md:w-1/2 xl:w-1/3"
             style={{ height: "90vh" }}
           >
             <div className="inline-flex items-center justify-between">
@@ -210,7 +228,7 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
                 {step === 0 ? (
                   <Link href={`/games/${slug}`}>
                     <svg
-                      className="w-10 h-10 border-gray-500 border-r pr-4 mr-4 cursor-pointer"
+                      className="w-10 h-10 pr-4 mr-4 border-r border-gray-500 cursor-pointer"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -226,7 +244,7 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
                   </Link>
                 ) : (
                   <svg
-                    className="w-10 h-10 border-gray-500 border-r pr-4 mr-4 cursor-pointer"
+                    className="w-10 h-10 pr-4 mr-4 border-r border-gray-500 cursor-pointer"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -244,14 +262,14 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
                 <div className="flex flex-col">
                   <p className="text-2xl">
                     Buy
-                    <span className="font-bold text-white ml-2">{title}</span>
+                    <span className="ml-2 font-bold text-white">{title}</span>
                   </p>
                 </div>
 
                 {/* Logo ? */}
               </div>
               <svg
-                className="w-9 h-9 text-gray-600"
+                className="text-gray-600 w-9 h-9"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -265,7 +283,17 @@ const Buy = ({ slug, title, color, backgroundUrl, logoUrl, price }) => {
                 />
               </svg>
             </div>
-            <section className="mt-4">{stepsComponents[step]}</section>
+            {/* <section className="mt-4">{stepsComponents[step]}</section> */}
+            <section className="flex items-end h-full my-4">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={addToLibrary}
+                className="inline-flex items-center justify-center flex-shrink w-full py-4 text-xl tracking-widest uppercase bg-green-600"
+              >
+                Add to your library
+              </motion.button>
+            </section>
           </motion.div>
         </div>
       </section>
@@ -279,6 +307,6 @@ export async function getServerSideProps(ctx) {
   const game = await gameRef.get();
 
   return { props: { slug, ...game.data() } };
-};
+}
 
 export default Buy;

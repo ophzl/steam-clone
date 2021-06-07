@@ -40,17 +40,17 @@ const GamePage = ({
 
   return (
     <Layout>
-      <section className="relative w-full h-96 md:h-auto md:min-h-96 overflow-hidden">
+      <section className="relative w-full overflow-hidden h-96 md:h-auto md:min-h-96">
         <motion.div
           className={`bg-gradient-to-b from-${color}-400 h-screen/2 xl:h-screen 3xl:h-screen/2 to-black w-full overflow-hidden`}
           layoutId={slug + "_bg"}
         >
           <img
-            className="object-cover h-full w-full md:h-auto xl:h-screen"
+            className="object-cover w-full h-full md:h-auto xl:h-screen"
             src={backgroundUrl}
             alt={slug + "-background"}
           ></img>
-          <div className="p-5 flex flex-col absolute bottom-0 left-0">
+          <div className="absolute bottom-0 left-0 flex flex-col p-5">
             <motion.img
               layoutId={slug + "_logo"}
               className="max-h-24 md:w-auto md:h-full md:max-h-32"
@@ -59,7 +59,7 @@ const GamePage = ({
             ></motion.img>
           </div>
           {owned && (
-            <div className="absolute inset-0 flex justify-center items-center invisible md:visible">
+            <div className="absolute inset-0 flex items-center justify-center invisible md:visible">
               <motion.button
                 // animate={{ scale: 1 }}
                 whileHover={{ scale: 1.1 }}
@@ -109,19 +109,19 @@ const GamePage = ({
         transition={{ duration: 1 }}
         className={`mt-6 flex flex-col md:grid grid-cols-8 gap-4 md:h-24 mx-6`}
       >
-        <div className="w-full col-span-3 bg-gray-800 bg-opacity-50 py-4 pl-8 flex flex-col justify-center">
-          <h4 className="text-gray-200 text-2xl tracking-wider font-light">
+        <div className="flex flex-col justify-center w-full col-span-3 py-4 pl-8 bg-gray-800 bg-opacity-50">
+          <h4 className="text-2xl font-light tracking-wider text-gray-200">
             {title}
           </h4>
           {owned ? (
-            <p className="text-gray-600 inline-flex items-center mt-1">
+            <p className="inline-flex items-center mt-1 text-gray-600">
               Time played:
               <span className={`text-${color}-500 font-medium ml-2`}>
                 {timePlayed} hours
               </span>
             </p>
           ) : (
-            <p className="text-gray-600 inline-flex items-center mt-1">
+            <p className="inline-flex items-center mt-1 text-gray-600">
               <span className={`text-${color}-500 font-medium mr-2`}>5</span>
               Friends that have {title}
             </p>
@@ -135,13 +135,13 @@ const GamePage = ({
           }
         >
           {owned ? (
-            <div className="flex h-full items-center justify-end md:pr-16">
+            <div className="flex items-center justify-end h-full md:pr-16">
               <motion.button
                 // animate={{ scale: 1 }}
                 whileHover={{ scale: 1.1 }}
                 // transition={{ duration: 1 }}
                 whileTap={{ scale: 0.9 }}
-                className="bg-green-700 text-white inline-flex items-center px-6 py-3 focus:outline-none text-lg font-medium tracking-wider uppercase"
+                className="inline-flex items-center px-6 py-3 text-lg font-medium tracking-wider text-white uppercase bg-green-700 focus:outline-none"
               >
                 <svg
                   className="w-6 h-6 mr-2"
@@ -159,8 +159,8 @@ const GamePage = ({
               </motion.button>
             </div>
           ) : (
-            <div className="flex flex-row h-full items-center justify-end md:pr-16">
-              <p className="mr-6 text-gray-400 text-xl">
+            <div className="flex flex-row items-center justify-end h-full md:pr-16">
+              <p className="mr-6 text-xl text-gray-400">
                 Price:
                 <span className={`font-semibold text-${color}-400 ml-2`}>
                   {price}
@@ -173,7 +173,7 @@ const GamePage = ({
                   whileHover={{ scale: 1.1 }}
                   // transition={{ duration: 1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="bg-gray-700 text-white inline-flex items-center px-6 py-3 focus:outline-none text-lg font-medium tracking-wider uppercase"
+                  className="inline-flex items-center px-6 py-3 text-lg font-medium tracking-wider text-white uppercase bg-gray-700 focus:outline-none"
                 >
                   <svg
                     className="w-6 h-6 mr-2"
@@ -196,7 +196,7 @@ const GamePage = ({
       </motion.section>
 
       <section className="mt-6 mb-3 text-gray-200">
-        <div className="mx-6 flex flex-col md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="flex flex-col grid-cols-2 gap-6 mx-6 md:grid lg:grid-cols-3 xl:grid-cols-4">
           <SubInfo
             developper={developper}
             publisher={publisher}
@@ -273,119 +273,3 @@ export async function getServerSideProps(ctx) {
 }
 
 export default GamePage;
-
-/**
- * switch (slug) {
-    case "cyberpunk-2077":
-      props = {
-        backgroundUrl: "https://media.melty.fr/article-4313652-so/media.jpg",
-        logoUrl:
-          "https://i.shgcdn.com/6c053630-2241-4b11-8b35-2cec9043d819/-/format/auto/-/preview/3000x3000/-/quality/lighter/",
-        color: "yellow",
-        title: "Cyberpunk 2077",
-        owned: true,
-        price: "69.99$",
-      };
-      break;
-    case "ori":
-      props = {
-        backgroundUrl:
-          "https://www.fanbyte.com/wp-content/uploads/2020/07/ori.jpg",
-        logoUrl:
-          "https://steamcdn-a.akamaihd.net/steam/apps/261570/logo.png?t=1424994057",
-        color: "blue",
-        title: "Ori and the Blind Forest",
-        owned: false,
-        price: "19.99$",
-      };
-      break;
-    case "adibou-2":
-      props = {
-        backgroundUrl: "https://adibou.mrtino.eu/img/adibou2.jpg",
-        logoUrl:
-          "https://images.launchbox-app.com/ddceecee-4038-411f-99a0-be67b2d3f206.png",
-        color: "purple",
-        title: "Adibou et l'Ombre Verte",
-        owned: false,
-        price: "5.99$",
-      };
-      break;
-    case "minecraft":
-      props = {
-        // backgroundUrl: "https://i.imgur.com/8QCax1W.png",
-        backgroundUrl: "https://pbs.twimg.com/media/Eauzw3CXgAAJaVR.jpg:large",
-        logoUrl: "https://pngimg.com/uploads/minecraft/minecraft_PNG16.png",
-        color: "red",
-        title: "Minecraft",
-        owned: false,
-        price: "25.99$",
-      };
-      break;
-
-    case "half-life-alyx":
-      props = {
-        backgroundUrl:
-          "https://gameranx.com/wp-content/uploads/2020/01/Half-Life-Alyx-4K-Wallpaper.jpg",
-        logoUrl: "https://i.imgur.com/l6zTfqc.png",
-        color: "gray",
-        title: "Half-Life: Alyx",
-        owned: true,
-
-        price: "49.99$",
-      };
-      break;
-    case "fifa-21":
-      props = {
-        backgroundUrl: "https://wallpaperaccess.com/full/1108509.jpg",
-        logoUrl:
-          "https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/fifa21-logo-buy-odhfowwo18r-xl-m.png",
-        color: "gray",
-        title: "Fifa 21",
-        owned: true,
-
-        price: "49.99$",
-      };
-      break;
-    case "black-ops-cold-war":
-      props = {
-        backgroundUrl:
-          "https://compass-ssl.xbox.com/assets/f5/61/f5611b5a-0405-4eb3-ad13-acabc6310b7f.jpg?n=242149_GLP-Page-Hero-1084_1920x1080.jpg",
-        logoUrl:
-          "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/zeus/common/logos/zeus-logo-light.png",
-        color: "red",
-        title: "Call of Duty: Black Ops Cold War",
-        owned: true,
-
-        price: "69.99$",
-      };
-      break;
-    case "bioshock-collection":
-      props = {
-        backgroundUrl: "https://wallpapercave.com/wp/wp5251596.jpg",
-        logoUrl:
-          "https://img2.pngio.com/bioshock-logo-transparent-png-clipart-free-download-ywd-bioshock-the-collection-png-980_485.png",
-        color: "blue",
-        title: "BioShock Collection",
-        owned: true,
-
-        price: "49.99$",
-      };
-      break;
-
-    default:
-      props = {
-        backgroundUrl:
-          "https://www.wallpapertip.com/wmimgs/181-1813965_cyberpunk-2077-yellow-plain-background-wallpaper.jpg",
-        logoUrl:
-          "https://i.shgcdn.com/6c053630-2241-4b11-8b35-2cec9043d819/-/format/auto/-/preview/3000x3000/-/quality/lighter/",
-        color: "gray",
-        title: "Cyberpunk 2077",
-
-        owned: true,
-        price: "69.99$",
-      };
-      break;
-  }
-
-  return { slug, ...props };
- */

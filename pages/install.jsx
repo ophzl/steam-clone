@@ -6,7 +6,7 @@ function Install() {
 
   return (
     <Layout noPadding>
-      <div>
+      <div style={{backgroundImage:'url("https://wallpaper.dog/large/17125978.jpg")', backgroundSize:'cover', backgroundColor:"rgba(0, 0, 0, .5)"}}>
         <div className="flex items-center w-full h-screen max-w-6xl px-4 mx-auto sm:px-6">
           <div className="w-full pt-32 pb-12 md:pt-40 md:pb-20">
             <div className="w-full pb-12 text-center md:pb-16">
@@ -16,7 +16,7 @@ function Install() {
                 }`}
               >
                 Make your gaming experience
-                <span className="text-transparent bg-clip-text bg-gradient-to-tr from-yellow-400 via-yellow-600 to-red-500">
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-red-500">
                   wonderful
                 </span>
               </h1>
